@@ -14,9 +14,11 @@
 
 
 <ion-content padding>
-<div id="informationButton">
-<ion-icon name="information-circle"  (click)="showInfo()"></ion-icon>
-</div>
+
+<header id="information">
+  <h1>Selecteer het benodige materiaal </h1>
+  <ion-icon name="information-circle"  (click)="showInfo()"></ion-icon>
+</header>
 <ion-grid id="grid">
   <ion-row>
     <ion-col (click)="addMaterial">
