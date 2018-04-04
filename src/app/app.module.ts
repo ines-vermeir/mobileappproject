@@ -6,11 +6,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LabotafelPage } from '../pages/labotafel/labotafel';
+import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LabotafelPage,
+    DragMateriaalDirective
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LabotafelPage
   ],
   providers: [
     StatusBar,

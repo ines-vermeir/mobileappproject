@@ -1,0 +1,34 @@
+<!--
+  Generated template for the LabotafelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header drag-materiaal>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+<!--    <button ion-button drag-materiaal startLeft="20" startTop="100">Drag Me!</button>
+
+    <button ion-button drag-materiaal>Drag Me!</button>
+
+    <ion-card drag-materiaal startLeft="200" startTop="200">
+        <ion-card-content>
+            Drag me!
+        </ion-card-content>
+    </ion-card>
+
+    <p drag-materiaal>
+        Drag me!
+    </p>
+-->
+    <img startLeft="100" startTop="100" src="" drag-materiaal />
+    <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb" drag-materiaal/>
+
+</ion-content>
