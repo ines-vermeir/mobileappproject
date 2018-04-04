@@ -6,23 +6,25 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { SelecteerMateriaalPage } from '../pages/selecteer-materiaal/selecteer-materiaal';
+import { LabotafelPage } from '../pages/labotafel/labotafel';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SelecteerMateriaalPage
+    LabotafelPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp)
+    angular.module('app', ['ngDraggable']);
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    SelecteerMateriaalPage
+    LabotafelPage
   ],
   providers: [
     StatusBar,

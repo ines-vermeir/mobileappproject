@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { SelecteerMateriaalPage } from '../selecteer-materiaal/selecteer-materiaal';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +11,7 @@ export class HomePage {
 
   }
   loadNew(){
-    this.navCtrl.push(SelecteerMateriaalPage);
+
   }
 
 }
