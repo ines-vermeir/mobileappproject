@@ -23,5 +23,4 @@ export class Materiaal{
   public getAfbeelding() : string {
     return this.afbeelding;
   }
-  
 }
