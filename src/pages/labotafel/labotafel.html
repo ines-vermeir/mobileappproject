@@ -28,7 +28,11 @@
         Drag me!
     </p>
 -->
-    <img startLeft="100" startTop="100" src="" drag-materiaal />
-    <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb" drag-materiaal/>
-
+    <!--<img startLeft="100" startTop="100" src="../../assets/imgs/pipette.jpg" alt="foto" drag-materiaal />-->
+    <!--<img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb drag-materiaal"/>
+  -->
+    <div drag-materiaal>
+      <ion-img startLeft="80" startTop="80" src="../../assets/imgs/pipette.jpg" ></ion-img>
+      <p> pipette </p>
+  </div>
 </ion-content>

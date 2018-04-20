@@ -18,7 +18,7 @@ export class LabotafelPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
  }
- .controller('MediaCtrl', function($scope, $ionicModal) {
+/*$this.controller('MediaCtrl', function($scope, $ionicModal) {
  	$scope.allImages = [{
  		'src' : 'img/pipette.jpg'
  	}];
@@ -43,7 +43,7 @@ export class LabotafelPage {
  		$scope.modal.hide();
  		$scope.modal.remove()
  	};
- }
+}*/
   ionViewDidLoad() {
     console.log('ionViewDidLoad LabotafelPage');
   }
