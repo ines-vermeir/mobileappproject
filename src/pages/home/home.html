@@ -1,14 +1,54 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title text-center>
+      Labo Oefenen App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-content padding>
+
+    <ion-grid>
+
+      <ion-list>
+        <!--
+         Beaker icon
+         -->
+        <ion-row justify-content-center margin-vertical>
+          <ion-col col-10 col-lg-7 text-center margin-vertical>
+            <img src="../../assets/imgs/beaker-icon.svg">
+          </ion-col>
+        </ion-row>
+
+        <!--
+         User input & password
+         -->
+        <ion-row justify-content-center>
+          <ion-col col-10 col-lg-7 class="home-input">
+            <ion-item no-lines>
+              <ion-label color="light" floating>E-mail</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-10  col-lg-7 class="home-input">
+            <ion-item no-lines>
+              <ion-label color="light" floating>Wachtwoord</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <!--
+         Submit button
+         -->
+        <ion-row justify-content-center margin-top>
+          <ion-col col-10 col-lg-7 text-center margin-top>
+            <button ion-button round large>Inloggen</button>
+          </ion-col>
+        </ion-row>
+
+      </ion-list>
+
+    </ion-grid>
+
 </ion-content>
