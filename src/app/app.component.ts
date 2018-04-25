@@ -4,13 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { LabotafelPage } from '../pages/labotafel/labotafel';
+import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
+
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LabotafelPage;
+  rootPage:any = MateriaalSelecterenPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
