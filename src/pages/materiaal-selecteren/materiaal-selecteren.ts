@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { LabotafelPage } from '../labotafel/labotafel';
 /**
  * Generated class for the MateriaalSelecterenPage page.
  *
@@ -17,6 +17,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MateriaalSelecterenPage {
 
   materiaal : Materiaal[];
+  checkItems = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.materiaal = lijst;
@@ -27,24 +28,43 @@ export class MateriaalSelecterenPage {
   }
 
   update() {
-    console.log(this);
-    let i : int = 0;
-    for(let item of this.materiaal){
-      if(this.materiaal[i].name == true){
-        console.log(this.materiaal + "true");
+    //do something when clicked
+  }
+
+  print(){
+    console.log(this.checkItems);
+  }
+
+  pushPage(){
+    // push another page onto the navigation stack
+    // causing the nav controller to transition to the new page
+    // optional data can also be passed to the pushed page.
+
+    var array = [];
+    console.log('-------- checked items');
+    console.log(this.checkItems);
+
+    console.log('-------- key :');
+    Object.keys(this.checkItems).forEach(key => {
+      console.log(key);
+      if (this.checkItems[key] == true) {
+        array.push(key);
       }
-      i++;
-    }
+    });
+
+    console.log('-------- array :');
+    console.log(array);
+    console.log('-------- next page :');
+
+    this.navCtrl.push(LabotafelPage, {
+      selected: array
+    });
   }
 }
 
-export class Materiaal{
-   id: number;
-   name: string;
-}
 
-const lijst : Materiaal[] = [
-  {id: 1, name: "Pipetteerballon"},
-  {id: 2, name: "Maatbeker"},
-  {id: 3, name: "Erlenmeyer"}
+const lijst = [
+  {name: "Pipetteerballon"},
+  {name: "Maatbeker"},
+  {name: "Erlenmeyer"}
 ];

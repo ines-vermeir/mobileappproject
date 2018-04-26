@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { CommonModule } from '@angular/common';
+import { LabotafelPage} from '../pages/labotafel/labotafel'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { CommonModule } from '@angular/common';
     HomePage,
     MateriaalSelecterenPage,
     DragMateriaalDirective,
-
+    LabotafelPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,8 @@ import { CommonModule } from '@angular/common';
   entryComponents: [
     MyApp,
     HomePage,
-    MateriaalSelecterenPage
+    MateriaalSelecterenPage,
+    LabotafelPage
 
   ],
   providers: [
