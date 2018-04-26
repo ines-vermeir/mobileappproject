@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, AlertController, NavController, NavParams, ViewController, App } from 'ionic-angular';
+import { MateriaalSelecterenPage } from '../materiaal-selecteren/materiaal-selecteren';
 /**
  * Generated class for the LabotafelPage page.
  *
@@ -25,7 +25,7 @@ export class LabotafelPage {
   {name: "Erlenmeyer"}
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public appCtrl: App) {
     this.materiaalGeselecteerd = navParams.get('selected');
     /*var a = 5 ;
     for(let i = 0; i < this.materiaal.length; i++ ){
@@ -42,9 +42,54 @@ export class LabotafelPage {
 
   controle(){
     let correct = false;
-    if(materiaalCorrect.length === materiaalGeselecteerd.length){
-      console.log("zelfde lengte");
+    if(this.materiaalCorrect.length === this.materiaalGeselecteerd.length){
+      let juist = 0;
+      for(let i = 0; i < this.materiaalCorrect.length; i++){
+        for(let j = 0; j < this.materiaalGeselecteerd.length; j++){
+          if(this.materiaalCorrect[i].name == this.materiaalGeselecteerd[j]){
+            juist++;
+          }
+        }
+      }
+      if(juist === this.materiaalCorrect.length){
+        correct = true;
+      }
     }
+
+    if(correct){
+      let alert = this.alertCtrl.create({
+      title: 'Correct',
+      message: "NOT IMPLEMENTED Antwoord is correct!",
+      buttons: [
+        {
+          text: 'Volgende vraag',
+          handler: () => {
+            console.log('NOT IMPLEMENTED -> GA NAAR VOLGENDE OEFENING');
+          }
+        }]
+    });
+    }else{
+      let alert = this.alertCtrl.create({
+      title: 'Feedback',
+      message: "Antwoord niet correct. (stop not IMPLEMENTED)",
+      buttons: [
+        {
+          text: 'stop',
+          role: 'cancel', //cancel of null(geen rol)
+          handler: () => {
+            console.log('NOT IMPLEMENTED -> GA TERUG NAAR OVERZICHT');
+          }
+        },
+        {
+          text: 'probeer opnieuw',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+      });
+    }
+    alert.present();
   }
 
 }

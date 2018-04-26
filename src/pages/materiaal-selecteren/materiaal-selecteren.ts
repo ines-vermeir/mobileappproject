@@ -66,5 +66,6 @@ export class MateriaalSelecterenPage {
 const lijst = [
   {name: "Pipetteerballon"},
   {name: "Maatbeker"},
-  {name: "Erlenmeyer"}
+  {name: "Erlenmeyer"},
+  {name: "Proefbuis"}
 ];
