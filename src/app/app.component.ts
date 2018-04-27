@@ -4,11 +4,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
+import { LabotafelPage} from '../pages/labotafel/labotafel'
+import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  //@ViewChild('myNav') nav: NavController
+  rootPage:any = MateriaalSelecterenPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -18,5 +23,9 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-}
 
+/*  ngOnInit() {
+      // Let's navigate from TabsPage to Page1
+      this.nav.push(MateriaalSelecterenPage);
+   }*/
+}
