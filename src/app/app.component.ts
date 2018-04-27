@@ -7,13 +7,14 @@ import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
+import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
-  rootPage:any = MateriaalSelecterenPage;
+  rootPage:any = MateriaalWerkwijzePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
