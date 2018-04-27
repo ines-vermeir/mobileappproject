@@ -57,7 +57,7 @@ export class LabotafelPage {
     }
 
     if(correct){
-      let alert = this.alertCtrl.create({
+      let alertct = this.alertCtrl.create({
       title: 'Correct',
       message: "NOT IMPLEMENTED Antwoord is correct!",
       buttons: [
@@ -69,7 +69,7 @@ export class LabotafelPage {
         }]
     });
     }else{
-      let alert = this.alertCtrl.create({
+      let alertct = this.alertCtrl.create({
       title: 'Feedback',
       message: "Antwoord niet correct. (stop not IMPLEMENTED)",
       buttons: [
@@ -89,7 +89,7 @@ export class LabotafelPage {
       ]
       });
     }
-    alert.present();
+    alertct.present();
   }
 
 }

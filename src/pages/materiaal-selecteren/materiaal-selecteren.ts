@@ -16,7 +16,7 @@ import { LabotafelPage } from '../labotafel/labotafel';
 
 export class MateriaalSelecterenPage {
 
-  materiaal : Materiaal[];
+  materiaal : string[];
   checkItems = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
