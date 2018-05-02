@@ -13,7 +13,7 @@ import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materi
 })
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
-  rootPage:any = MateriaalSelecterenPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
