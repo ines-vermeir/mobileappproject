@@ -15,22 +15,25 @@
 
 <ion-content padding>
   <ion-list radio-group>
-    <ion-list-header>
+    <!--<ion-list-header>
       Is de stof goed oplosbaar?
-    </ion-list-header>
+    </ion-list-header>-->
 
     <ion-item>
       <ion-label>Goed oplosbaar</ion-label>
-      <ion-radio value="goed oplosbaar"></ion-radio>
+      <ion-radio value="goed oplosbaar" [(ngModel)]="keuze[goed oplosbaar]"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Slecht oplosbaar</ion-label>
-      <ion-radio value="rust"></ion-radio>
+      <ion-radio value="Slecht oplosbaar" (ionChange)="print()" [(ngModel)]="keuze[slecht oplosbaar]"></ion-radio>
     </ion-item>
 
-    
   </ion-list>
+
+  <button ion-button (click)="next()">
+         Volgende
+  </button>
 
 
 </ion-content>

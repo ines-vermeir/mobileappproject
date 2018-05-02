@@ -15,11 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MateriaalWerkwijzePage {
 
+  keuze = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MateriaalWerkwijzePage');
+  }
+
+  print(){
+    console.log(this.keuze);
+    console.log("test");
+  }
+
+  next(){
+    console.log(this.keuze);
   }
 
 }
