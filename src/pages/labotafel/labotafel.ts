@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, AlertController, NavController, NavParams, ViewController, App } from 'ionic-angular';
-import { MateriaalSelecterenPage } from '../materiaal-selecteren/materiaal-selecteren';
+//import { MateriaalSelecterenPage } from '../materiaal-selecteren/materiaal-selecteren';
 /**
  * Generated class for the LabotafelPage page.
  *
@@ -57,7 +57,7 @@ export class LabotafelPage {
     }
 
     if(correct){
-      let alertct = this.alertCtrl.create({
+      let alert = this.alertCtrl.create({
       title: 'Correct',
       message: "NOT IMPLEMENTED Antwoord is correct!",
       buttons: [
@@ -68,8 +68,9 @@ export class LabotafelPage {
           }
         }]
     });
+    alert.present();
     }else{
-      let alertct = this.alertCtrl.create({
+      let alert = this.alertCtrl.create({
       title: 'Feedback',
       message: "Antwoord niet correct. (stop not IMPLEMENTED)",
       buttons: [
@@ -88,8 +89,8 @@ export class LabotafelPage {
         }
       ]
       });
+      alert.present();
     }
-    alertct.present();
   }
 
 }

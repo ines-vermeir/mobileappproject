@@ -14,26 +14,37 @@
 
 
 <ion-content padding>
-  <ion-list radio-group>
-    <!--<ion-list-header>
-      Is de stof goed oplosbaar?
-    </ion-list-header>-->
+  <form (ngSubmit)="logForm()" *ngIf="isVisibleForm">
+    <ion-list radio-group [(ngModel)]="keuze" name="oplosbaar">
+        <ion-list-header>
+          Is de stof goed oplosbaar?
+        </ion-list-header>
 
-    <ion-item>
-      <ion-label>Goed oplosbaar</ion-label>
-      <ion-radio value="goed oplosbaar" [(ngModel)]="keuze[goed oplosbaar]"></ion-radio>
-    </ion-item>
+        <ion-item>
+          <ion-label>Goed oplosbaar</ion-label>
+          <ion-radio value="goed"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Slecht oplosbaar</ion-label>
+          <ion-radio value="slecht" ></ion-radio>
+        </ion-item>
+      </ion-list>
 
-    <ion-item>
-      <ion-label>Slecht oplosbaar</ion-label>
-      <ion-radio value="Slecht oplosbaar" (ionChange)="print()" [(ngModel)]="keuze[slecht oplosbaar]"></ion-radio>
-    </ion-item>
-
-  </ion-list>
-
-  <button ion-button (click)="next()">
+      <button ion-button type="submit">
          Volgende
-  </button>
+       </button>
+   </form>
 
+   <div *ngIf="isVisibleList">
+     <ion-list>
+       <ion-list-header>{{keuze}} oplosbaar</ion-list-header>
+       <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
+         <ion-item *ngFor="let stap of stappen">{{ stap }}</ion-item>
+       </ion-item-group>
+     </ion-list>
+     <button ion-button (click)="controle()" >
+            Controleer
+      </button>
+  </div>
 
 </ion-content>
