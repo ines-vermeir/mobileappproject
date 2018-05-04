@@ -8,13 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { OefeningenPage} from "../pages/oefeningen/oefeningen";
+import { Sleep_oefeningPage} from "../pages/sleep_oefening/sleep_oefening";
+import { Orden_oefening} from "../pages/orden_oefening/orden_oefening";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     FeedbackPage,
-    OefeningenPage
+    OefeningenPage,
+    Sleep_oefeningPage,
+    Orden_oefening
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,9 @@ import { OefeningenPage} from "../pages/oefeningen/oefeningen";
     MyApp,
     HomePage,
     FeedbackPage,
-    OefeningenPage
+    OefeningenPage,
+    Sleep_oefeningPage,
+    Orden_oefening
   ],
   providers: [
     StatusBar,
