@@ -157,3 +157,31 @@
   box-shadow: none;
   width: 50%;
 }
+
+.oefening-keuze-container{
+  margin: 0 !important;
+  padding: 0;
+}
+
+.oefening-keuze{
+  margin: 10px 4vw !important;
+  border: 2px solid #EBEBEB;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.oefening-keuze-option{
+  border-bottom: 2px solid #EBEBEB !important;
+  font-size: 14px;
+}
+
+.oefening-keuze-option:last-child{
+  border-bottom: none !important;
+}
+
+.oefening-keuze-uitleg{
+  margin: 10px 4vw !important;
+}
+
+

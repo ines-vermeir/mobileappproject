@@ -10,6 +10,7 @@ import { FeedbackPage } from '../pages/feedback/feedback';
 import { OefeningenPage} from "../pages/oefeningen/oefeningen";
 import { Sleep_oefeningPage} from "../pages/sleep_oefening/sleep_oefening";
 import { Orden_oefening} from "../pages/orden_oefening/orden_oefening";
+import { Keuze_oefening } from "../pages/keuze_oefening/keuze_oefening";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Orden_oefening} from "../pages/orden_oefening/orden_oefening";
     FeedbackPage,
     OefeningenPage,
     Sleep_oefeningPage,
-    Orden_oefening
+    Orden_oefening,
+    Keuze_oefening
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { Orden_oefening} from "../pages/orden_oefening/orden_oefening";
     FeedbackPage,
     OefeningenPage,
     Sleep_oefeningPage,
-    Orden_oefening
+    Orden_oefening,
+    Keuze_oefening
   ],
   providers: [
     StatusBar,
