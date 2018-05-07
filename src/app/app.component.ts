@@ -15,7 +15,7 @@ import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-we
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
   rootPage:any = MateriaalWerkwijzePage;
-
+  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -24,6 +24,7 @@ export class MyApp {
       splashScreen.hide();
     });
   }
+
 
 /*  ngOnInit() {
       // Let's navigate from TabsPage to Page1

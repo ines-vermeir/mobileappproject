@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, reorderArray, AlertController } from 'ionic-angular';
-
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import * as $ from 'jquery';
 /**
  * Generated class for the MateriaalWerkwijzePage page.
  *
@@ -15,67 +17,75 @@ import { IonicPage, NavController, NavParams, reorderArray, AlertController } fr
 })
 export class MateriaalWerkwijzePage {
 
-  keuze = "goed";
-  isVisibleForm = true;
-  isVisibleList = false;
+  //keuze = "goed";
+  isVisibleForm = false;
+  isVisibleList = true;
   stappen = [];
   stappenCorrect = [];
+  //feedback : string;
 
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  }
 
+  getData(){
+    var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
+    var self = this;
+    $.ajaxSetup({async:false});
+    $.get(url_s,function(data_o) {
+    console.log(data_o);
+      var overzicht = data_o.overzicht;
+      //console.log(overzicht);
+      var labo = overzicht.labo1;
+      //console.log(labo);
+      var stap = labo.stap2;
+      //console.log(stap)
+      self.stappen = stap.antwoord;
+      self.stappenCorrect = stap.antwoord;
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MateriaalWerkwijzePage');
+    var self = this;
+    $(document).ready(function(){
+      self.getData();
+      console.log("initialize");
+      console.log(self.stappen);
+      console.log(self.stappenCorrect);
+      self.randomize();
+    });
   }
 
-
-  logForm(){
-
-    if(this.keuze == "slecht"){
-      for (let x = 0; x < 5; x++) {
-       this.stappen.push(x);
-       this.stappenCorrect.push(x);
-     }
-    }
-    if(this.keuze == "goed"){
-      for (let x = 0; x < 10; x++) {
-       this.stappen.push(x);
-       this.stappenCorrect.push(x);
-     }
-    }
-    console.log(this.keuze);
-    this.isVisibleForm = false;
-    this.isVisibleList = true;
-    console.log(this.stappen);
-
+  randomize(){
     let counter = this.stappen.length;
-
-  // While there are elements in the array
+    //While there are elements in the array
     while (counter > 0) {
-      // Pick a random index
-      let index = Math.floor(Math.random() * counter);
+    // Pick a random index
+    let index = Math.floor(Math.random() * counter);
 
-      // Decrease counter by 1
-      counter--;
+    // Decrease counter by 1
+    counter--;
 
-      // And swap the last element with it
-      let temp = this.stappen[counter];
-      this.stappen[counter] = this.stappen[index];
-      this.stappen[index] = temp;
+    // And swap the last element with it
+    let temp = this.stappen[counter];
+    this.stappen[counter] = this.stappen[index];
+    this.stappen[index] = temp;
     }
 
+    console.log("random");
     console.log(this.stappen);
+    console.log(this.stappenCorrect);
   }
 
 
   reorderItems(indexes) {
-    this.items = reorderArray(this.stappen, indexes);
+    this.stappen = reorderArray(this.stappen, indexes);
   }
 
   controle(){
     console.log("controle");
     console.log(this.stappen);
+    console.log(this.stappenCorrect);
 
     var correct = true;
     for(var i = 0; i < this.stappenCorrect.length; i++){
