@@ -13,7 +13,10 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {      
       
   }
-    
+    goToOef(){
+        console.log("test1")
+        this.navCtrl.push(OefeningOverzichtPage);
+    }
  
 }
 

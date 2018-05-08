@@ -24,6 +24,7 @@ export class OefeningOverzichtPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OefeningOverzichtPage');
+      
   }
     launchStap(oef){
         console.log("click");
