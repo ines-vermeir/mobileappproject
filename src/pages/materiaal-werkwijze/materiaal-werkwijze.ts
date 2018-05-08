@@ -22,7 +22,8 @@ export class MateriaalWerkwijzePage {
   isVisibleList = true;
   stappen = [];
   stappenCorrect = [];
-  //feedback : string;
+  feedback : string;
+  vraag : string;
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
   }
@@ -39,8 +40,13 @@ export class MateriaalWerkwijzePage {
       //console.log(labo);
       var stap = labo.stap2;
       //console.log(stap)
-      self.stappen = stap.antwoord;
-      self.stappenCorrect = stap.antwoord;
+      var antwoorden = stap.antwoord;
+      for(let i = 0; i < antwoorden.length; i++){
+        self.stappen.push(antwoorden[i]);
+        self.stappenCorrect.push(antwoorden[i]);
+      }
+      self.feedback = stap.feedback;
+      self.vraag = stap.vraag;
     });
   }
 
@@ -97,7 +103,7 @@ export class MateriaalWerkwijzePage {
     if(correct){
       let alert = this.alertCtrl.create({
       title: 'Correct',
-      message: "NOT IMPLEMENTED Antwoord is correct!",
+      message: "Antwoord is correct!",
       buttons: [
         {
           text: 'Volgende vraag',
@@ -110,7 +116,7 @@ export class MateriaalWerkwijzePage {
     }else{
       let alert = this.alertCtrl.create({
       title: 'Feedback',
-      message: "Antwoord niet correct. (stop not IMPLEMENTED)",
+      message: this.feedback,
       buttons: [
         {
           text: 'stop',
@@ -122,7 +128,7 @@ export class MateriaalWerkwijzePage {
         {
           text: 'probeer opnieuw',
           handler: () => {
-            this.logForm();
+            this.navCtrl.setRoot(this.navCtrl.getActive().component);
           }
         }
       ]

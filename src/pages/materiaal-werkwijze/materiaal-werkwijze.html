@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="logForm()" *ngIf="isVisibleForm">
+  <!--<form (ngSubmit)="logForm()" *ngIf="isVisibleForm">
     <ion-list radio-group [(ngModel)]="keuze" name="oplosbaar">
         <ion-list-header>
           Is de stof goed oplosbaar?
@@ -33,11 +33,11 @@
       <button ion-button type="submit">
          Volgende
        </button>
-   </form>
+   </form>-->
    <p class="test"> </p>
    <div *ngIf="isVisibleList">
      <ion-list>
-       <ion-list-header>{{keuze}} oplosbaar</ion-list-header>
+       <ion-list-header>{{vraag}}</ion-list-header>
        <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
          <ion-item *ngFor="let stap of stappen">{{ stap }}</ion-item>
        </ion-item-group>

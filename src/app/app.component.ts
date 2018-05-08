@@ -14,8 +14,8 @@ import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-we
 })
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
-  rootPage:any = MateriaalWerkwijzePage;
-  
+  rootPage:any = HomePage;
+
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
