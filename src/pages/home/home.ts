@@ -9,8 +9,10 @@ import { StapPage } from '../stap/stap';
   selector: 'page-home',
   templateUrl: 'home.html' })
 export class HomePage {
+    lijstOefening = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {      
+constructor(public navCtrl: NavController, public navParams: NavParams){
+      this.lijstOefening = lijst;
       
   }
     goToOef(){
@@ -20,4 +22,10 @@ export class HomePage {
  
 }
 
-
+const lijst = [
+    {id: 1},
+    {id: 2},
+    {id: 3},
+    {id: 4},
+    {id: 5, title:"jdksfhjk"}
+];

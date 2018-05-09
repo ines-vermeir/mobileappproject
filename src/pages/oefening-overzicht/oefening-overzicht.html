@@ -13,13 +13,39 @@
 </ion-header>
 
 
-<ion-content padding>
-    <button ion-button (click)="launchStap('1')">Next</button>
+<ion-content class="cards-bg">
+
+  <ion-card *ngFor="let oef of lijstOefening">
+
+    <ion-card-content>
+      <ion-card-title>
+        Title: {{oef.id}}
+      </ion-card-title>
+      <p>
+        Inhoud: {{oef.id}}
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <p>
+        Iets: {{oef.id}}
+      </p>
+      </ion-col>
+      <ion-col text-center>
+        <p>
+        Iets: {{oef.id}}
+      </p>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+          Knop: {{oef.id}}
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>
 
-<ion-content *ngFor="let oef of lijstOefening">
-    <ion-content padding >
-        <ion-label>{{oef.id}}</ion-label>
-    <button ion-button (click)="launchStap(oef)">Test</button>
-</ion-content>
-</ion-content>
+
