@@ -111,7 +111,8 @@ export class OverzichtPage {
                 this.navCtrl.push(MateriaalSelecterenPage, {
                   stap: stap,
                   poging: pogingen
-                });
+                }, {animate: false}
+                );
                 //this.navCtrl.setRoot(MateriaalWerkwijzePage, {}, {animate: false, direction: 'forward'});
                 console.log("switch materiaal");
                 break;
@@ -119,7 +120,8 @@ export class OverzichtPage {
                 this.navCtrl.push(MateriaalWerkwijzePage, {
                   stap: stap,
                   poging: pogingen
-                });
+                }, {animate: false}
+                );
                 console.log("switch chronologische");
                 break;
               case "keuzevraag":

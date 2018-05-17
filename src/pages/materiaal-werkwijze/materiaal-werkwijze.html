@@ -37,7 +37,7 @@
    <ion-title>{{vraag}}</ion-title>
 
    <div *ngIf="isVisibleList">
-     <ion-list>
+     <ion-list text-wrap>
 
        <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
          <ion-item *ngFor="let stap of stappen">{{ stap }}</ion-item>
