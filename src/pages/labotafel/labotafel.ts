@@ -19,20 +19,24 @@ import { IonicPage, AlertController, NavController, NavParams, ViewController, A
 export class LabotafelPage {
 
   materiaalGeselecteerd = [];
+  url = [];
   //plaats = [];
-  materiaalCorrect = [
-  {name: "Pipetteerballon"},
-  {name: "Erlenmeyer"}
-  ];
+  materiaalCorrect = [];
+  feedback : String;
+  vraag : String;
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public appCtrl: App) {
     this.materiaalGeselecteerd = navParams.get('selected');
-    /*var a = 5 ;
-    for(let i = 0; i < this.materiaal.length; i++ ){
-      this.plaats.push(a);
-      a +=100;
-    }
-    console.log(this.plaats);*/
+    var materiaal = navParams.get('antwoord');
+    this.feedback = navParams.get('feedback');
+    this.vraag = navParams.get('vraag');
+
+    Object.keys(materiaal).forEach(key => {
+        this.materiaalCorrect.push(key);
+    });
+    console.log("****************************");
+    console.log(this.materiaalCorrect);
+      console.log("****************************");
   }
 
   ionViewDidLoad() {
@@ -46,7 +50,7 @@ export class LabotafelPage {
       let juist = 0;
       for(let i = 0; i < this.materiaalCorrect.length; i++){
         for(let j = 0; j < this.materiaalGeselecteerd.length; j++){
-          if(this.materiaalCorrect[i].name == this.materiaalGeselecteerd[j]){
+          if(this.materiaalCorrect[i] == this.materiaalGeselecteerd[j]){
             juist++;
           }
         }
@@ -59,12 +63,12 @@ export class LabotafelPage {
     if(correct){
       let alert = this.alertCtrl.create({
       title: 'Correct',
-      message: "NOT IMPLEMENTED Antwoord is correct!",
+      message: "Antwoord is correct!",
       buttons: [
         {
           text: 'Volgende vraag',
           handler: () => {
-            console.log('NOT IMPLEMENTED -> GA NAAR VOLGENDE OEFENING');
+            this.navCtrl.popTo( this.navCtrl.getByIndex(1));
           }
         }]
     });
@@ -72,13 +76,13 @@ export class LabotafelPage {
     }else{
       let alert = this.alertCtrl.create({
       title: 'Feedback',
-      message: "Antwoord niet correct. (stop not IMPLEMENTED)",
+      message: this.feedback,
       buttons: [
         {
           text: 'stop',
           role: 'cancel', //cancel of null(geen rol)
           handler: () => {
-            console.log('NOT IMPLEMENTED -> GA TERUG NAAR OVERZICHT');
+            this.navCtrl.popToRoot();
           }
         },
         {

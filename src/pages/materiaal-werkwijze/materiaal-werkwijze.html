@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton >
     <ion-title>MateriaalWerkwijze</ion-title>
   </ion-navbar>
 
@@ -34,10 +34,11 @@
          Volgende
        </button>
    </form>-->
-   <p class="test"> </p>
+   <ion-title>{{vraag}}</ion-title>
+
    <div *ngIf="isVisibleList">
      <ion-list>
-       <ion-list-header>{{vraag}}</ion-list-header>
+
        <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
          <ion-item *ngFor="let stap of stappen">{{ stap }}</ion-item>
        </ion-item-group>

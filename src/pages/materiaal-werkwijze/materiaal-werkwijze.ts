@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, reorderArray, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import * as $ from 'jquery';
+
 /**
  * Generated class for the MateriaalWerkwijzePage page.
  *
@@ -32,8 +31,10 @@ export class MateriaalWerkwijzePage {
 
     //werkwijze uit stap halen
     for(let i = 0; i < stap.antwoord.length; i++){
+    if(stap.antwoord[i] != null){
       this.stappen.push(stap.antwoord[i]);
       this.stappenCorrect.push(stap.antwoord[i]);
+    }
     }
     //werkijze random maken
     this.randomize();
@@ -47,6 +48,7 @@ export class MateriaalWerkwijzePage {
 
 
   }
+
 
   getData(){
     /*var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
@@ -128,9 +130,7 @@ export class MateriaalWerkwijzePage {
         {
           text: 'Volgende vraag',
           handler: () => {
-            this.navCtrl.pop(
-              correct= true
-            );
+            this.navCtrl.pop();
           }
         }]
     });
@@ -144,15 +144,13 @@ export class MateriaalWerkwijzePage {
           text: 'stop',
           role: 'cancel', //cancel of null(geen rol)
           handler: () => {
-          this.navCtrl.pop(
-            correct= false
-          );
+            this.navCtrl.popToRoot();
           }
         },
         {
           text: 'probeer opnieuw',
           handler: () => {
-            this.navCtrl.setRoot(this.navCtrl.getActive().component);
+            //pagina blijft zoals het is
           }
         }
       ]

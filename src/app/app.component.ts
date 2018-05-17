@@ -8,13 +8,14 @@ import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
+import {OverzichtPage} from '../pages/overzicht/overzicht';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
-  rootPage:any = HomePage;
+  rootPage:any = OverzichtPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

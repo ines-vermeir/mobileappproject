@@ -12,6 +12,7 @@ import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materi
 import { CommonModule } from '@angular/common';
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
+import {OverzichtPage} from '../pages/overzicht/overzicht';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-we
     MateriaalSelecterenPage,
     DragMateriaalDirective,
     LabotafelPage,
-    MateriaalWerkwijzePage
+    MateriaalWerkwijzePage,
+    OverzichtPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-we
     HomePage,
     MateriaalSelecterenPage,
     LabotafelPage,
-    MateriaalWerkwijzePage
+    MateriaalWerkwijzePage,
+    OverzichtPage
   ],
   providers: [
     StatusBar,
