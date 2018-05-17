@@ -89,7 +89,7 @@ export class LabotafelPage {
       ]
       });
     }
-    alertct.present();
+    // alertct.present();
   }
 
 }
