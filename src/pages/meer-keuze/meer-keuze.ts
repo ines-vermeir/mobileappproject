@@ -20,10 +20,14 @@ export class MeerKeuzePage {
     feedback;
     vraag;
     isVisibleForm;
+    geselecteerd;
     
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.lijstMogelijkheden = lijst;
-      this.mogelijkheden = mogelijkheden;
+      for (let entry of mogelijkheden) {
+          if (entry){
+              this.mogelijkheden.push(entry);
+          }
+      }
       this.correct = correct;
       this.feedback = feedback;
       this.vraag = vraag;
@@ -36,11 +40,18 @@ export class MeerKeuzePage {
     console.log('ionViewDidLoad MeerKeuzePage');
   }
 
-    valideren(antwoord){
-        
+    valideren(){
+        if (this.geselecteerd == this.correct){
+            console.log("nice");
+        }else{
+            alert(this.feedback)
+        }
     }
     test(){
-        console.log("test");
+        
+    }
+    setTest(mogelijkheid){
+        this.geselecteerd = mogelijkheid;
     }
 
 }

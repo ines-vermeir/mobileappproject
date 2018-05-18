@@ -65,6 +65,7 @@ export class LabotafelPage {
           text: 'Volgende vraag',
           handler: () => {
             console.log('NOT IMPLEMENTED -> GA NAAR VOLGENDE OEFENING');
+              //alertct.present();
           }
         }]
     });
@@ -89,7 +90,7 @@ export class LabotafelPage {
       ]
       });
     }
-    // alertct.present();
+    
   }
 
 }

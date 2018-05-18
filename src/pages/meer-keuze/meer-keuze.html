@@ -14,14 +14,12 @@
   
 
 <ion-content>
-    <form (ngSubmit)="test()">
-
-
+    <form (ngSubmit)="valideren()">
             <ion-label>{{vraag}}</ion-label>
-            <ion-list radio-group>
+            <ion-list radio-group (ngModel)="geselecteerd">
                 <ion-item *ngFor="let mogelijkheid of mogelijkheden">
                     <ion-label>{{mogelijkheid}}</ion-label>
-                    <ion-radio value="{{mogelijkheid}}"></ion-radio>
+                    <ion-radio name="antwoord" [value]="mogelijkheid" (ionSelect)="setTest(mogelijkheid)"></ion-radio>
                 </ion-item>
             </ion-list>
         <ion-label *ngIf="isVisibleForm">{{feedback}}</ion-label>
