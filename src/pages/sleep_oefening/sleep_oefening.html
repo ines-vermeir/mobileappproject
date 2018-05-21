@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Oefening 1 - Deel 1
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid no-margin>
+    <ion-row class="oefening-uitleg">
+      <ion-col col-9>Selecteer het materiaal dat je nodig hebt om dit labo te maken en klik dan op de tafel. Indien je alle juiste
+        materialen geselecteerd hebt, kan je naar de volgende stap gaan.
+      </ion-col>
+      <ion-col col-3 text-end><ion-icon class="info-button" ios="ios-information-circle" md="md-information-circle" (click)="presentAlert()"></ion-icon></ion-col>
+    </ion-row>
+    <ion-row margin-vertical align-items-center class="oefening-materiaal-grid">
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 1</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 2</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 3</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 4</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 5</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 6</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 7</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 8</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 9</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 10</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal"><img src="#"><br>Item 11</ion-col>
+      <ion-col col-4 text-center class="oefening-materiaal selected"><img src="#"><br>Item 12</ion-col>
+    </ion-row>
+    <ion-row margin-vertical>
+      <ion-col col-12 text-center>Tafel</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

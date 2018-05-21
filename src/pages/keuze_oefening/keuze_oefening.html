@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Meerkeuze
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 class="oefening-keuze-uitleg">Selecteer de juiste optie bij de juiste vraag.</ion-col>
+    </ion-row>
+    <ion-row class="oefening-keuze">
+
+      <ion-list col-12 text-center radio-group [(ngModel)]="relationship" class="oefening-keuze-container">
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+        <ion-label>Goed oplosbare oplossing</ion-label>
+        <ion-radio value="1" checked></ion-radio>
+      </ion-item>
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+          <ion-label>Slecht oplosbare oplossing</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+          <ion-label>Niet oplosbare oplossing</ion-label>
+          <ion-radio value="3"></ion-radio>
+        </ion-item>
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+          <ion-label>Goed oplosbare oplossing</ion-label>
+          <ion-radio value="4" checked></ion-radio>
+        </ion-item>
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+          <ion-label>Slecht oplosbare oplossing</ion-label>
+          <ion-radio value="5"></ion-radio>
+        </ion-item>
+        <ion-item text-center class="oefening-keuze-option" no-lines text-wrap>
+          <ion-label>Niet oplosbare oplossing</ion-label>
+          <ion-radio value="6"></ion-radio>
+        </ion-item>
+        <ion-item text-center class="oefening-keuze-button" no-lines>
+          <button ion-button block outline>Verder gaan</button>
+        </ion-item>
+      </ion-list>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
