@@ -13,39 +13,20 @@
 </ion-header>
 
 
-<ion-content class="cards-bg">
 
-  <ion-card *ngFor="let oef of lijstOefening">
 
-    <ion-card-content>
-      <ion-card-title>
-        Title: {{oef.id}}
-      </ion-card-title>
-      <p>
-        Inhoud: {{oef.id}}
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <p>
-        Iets: {{oef.id}}
-      </p>
-      </ion-col>
-      <ion-col text-center>
-        <p>
-        Iets: {{oef.id}}
-      </p>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button clear small color="danger" icon-start>
-          Knop: {{oef.id}}
-        </button>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
-
+<ion-content padding>
+    
+ <ion-grid class="oefeningen-grid" no-margin>
+     <ion-row margin-vertical class="oefening-tabel-header">
+     <ion-col col-9>Opdracht</ion-col>
+     <ion-col col-3 text-center>Poging</ion-col>
+   </ion-row>
+   <ion-row margin-vertical class="oefening" *ngFor="let oef of lijstOefening"  (click)="launchStap(oef.id)">
+     <ion-col col-9>{{oef.id}}</ion-col>
+     <ion-col col-3 text-center>{{oef.title}}</ion-col>
+   </ion-row>
+ </ion-grid>
 </ion-content>
 
 

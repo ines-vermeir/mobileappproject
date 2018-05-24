@@ -14,3 +14,172 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.oefening-orden-header{
+  border: 2px solid #EBEBEB;
+  border-radius: 6px 6px 0 0;
+  margin: 0 4vw 0 4vw !important;
+  font-weight: bold;
+  color: #222222;
+  font-size: 15px;
+}
+
+.oefening-orden-uitleg{
+  margin: 0 4vw 20px 4vw !important;
+}
+
+.oefening-orden-option{
+  margin: 0 4vw 0 4vw !important;
+  border: 2px solid #EBEBEB;
+  border-top: none;
+  background-color: #fff;
+
+  :nth-child(2){
+    border-left: 2px solid #EBEBEB;
+    padding-left: 10px;
+  }
+
+}
+
+.oefening-orden-option:hover{
+  background-color: #fcfcfc;
+  cursor: pointer;
+}
+
+
+.info-button{
+  cursor: pointer;
+  color: #FF7F11;
+}
+
+.second-elem{
+  padding-left: 10px;
+  border-left: 2px solid #EBEBEB;
+}
+
+
+.oefening-tabel-header{
+  margin-top: 32px !important;
+  border: #EBEBEB 2px solid;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  margin-bottom: 0 !important;
+  padding-left: 2%;
+  font-weight: bold;
+  color: #222222;
+  font-size: 18px;
+}
+
+.oefening-tabel-header ion-col{
+  border-right: 2px solid #EBEBEB;
+}
+
+.oefening-tabel-header ion-col:last-child{
+  border-right: none
+}
+
+.oefening{
+  border: #EBEBEB 2px solid;
+  border-top: none;
+  padding: 20px 0 20px 2%;
+  margin: 0 !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.oefening:hover{
+  background-color: #fcfcfc;
+}
+
+.oefening-doen{
+  color: #222222;
+}
+
+.oefening-locked{
+  color: #EBEBEB;
+}
+
+.oefening-gedaan{
+  color: #FF7F11;
+}
+
+.oefening-blocked{
+  color: #FC9999;
+}
+
+.oefening-materiaal{
+  padding: 20px 0;
+  border-right: 2px solid #EBEBEB;
+  border-bottom: 2px solid #EBEBEB;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.oefening-materiaal-grid{
+  border: 2px solid #EBEBEB;
+  border-radius: 6px;
+  overflow: hidden;
+  border-bottom: none;
+  border-right: none;
+  margin: 20px 4vw 10vh 4vw !important;
+}
+
+.oefening-uitleg{
+  margin: 0 4vw 0 4vw !important;
+}
+
+.info-button{
+  cursor: pointer;
+  color: #FF7F11;
+}
+
+.oefening-materiaal:active{
+  color: #FF7F11;
+}
+
+.home-input{
+  border: #EBEBEB 2px solid;
+  padding: 0;
+}
+
+.home-input:first-child{
+  border-radius: 6px 6px 0 0;
+  border-bottom: 0;
+  overflow: hidden;
+}
+
+.home-input:last-child{
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.home-button{
+  box-shadow: none;
+  width: 50%;
+}
+
+.oefening-keuze-container{
+  margin: 0 !important;
+  padding: 0;
+}
+
+.oefening-keuze{
+  margin: 10px 4vw !important;
+  border: 2px solid #EBEBEB;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.oefening-keuze-option{
+  border-bottom: 2px solid #EBEBEB !important;
+  font-size: 14px;
+}
+
+.oefening-keuze-option:last-child{
+  border-bottom: none !important;
+}
+
+.oefening-keuze-uitleg{
+  margin: 10px 4vw !important;
+}

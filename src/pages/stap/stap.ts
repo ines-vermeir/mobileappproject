@@ -14,13 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'stap.html',
 })
 export class StapPage {
-
+    id;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+      
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StapPage');
     console.log(this.navParams.get("id"));
+      this.id = this.navParams.get("id");
   }
 
 }
