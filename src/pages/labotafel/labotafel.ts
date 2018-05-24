@@ -22,8 +22,8 @@ export class LabotafelPage {
   materialen = [];
   svgs = [];
   materiaalCorrect = [];
-  feedback : String;
-  vraag : String;
+  feedback : string;
+  vraag : string;
   poging : number;
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public appCtrl: App) {
@@ -79,7 +79,7 @@ export class LabotafelPage {
         {
           text: 'Volgende vraag',
           handler: () => {
-            this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+            this.navCtrl.popTo(this.navCtrl.getActive().index - 2 );
           }
         }]
     });

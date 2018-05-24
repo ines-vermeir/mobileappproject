@@ -6,26 +6,25 @@
 -->
 
 <ion-header>
-    <ion-navbar>
-    <ion-title>meerKeuzePage</ion-title>
+    <ion-navbar  hideBackButton>
+    <ion-title>Meer keuze vraag</ion-title>
   </ion-navbar>
 
 </ion-header>
-  
+
 
 <ion-content>
-    <form (ngSubmit)="valideren()">
-            <ion-label>{{vraag}}</ion-label>
-            <ion-list radio-group (ngModel)="geselecteerd">
-                <ion-item *ngFor="let mogelijkheid of mogelijkheden">
-                    <ion-label>{{mogelijkheid}}</ion-label>
-                    <ion-radio name="antwoord" [value]="mogelijkheid" (ionSelect)="setTest(mogelijkheid)"></ion-radio>
-                </ion-item>
-            </ion-list>
-        <ion-label *ngIf="isVisibleForm">{{feedback}}</ion-label>
+      <ion-title text-wrap>{{vraag}}</ion-title>
 
-        <button ion-button type="submit">
-            Volgende
-        </button>
-    </form>
+      <ion-list>
+        <ion-item *ngFor="let mogelijkheid of mogelijkheden">
+            <ion-label>{{mogelijkheid}}</ion-label>
+            <ion-radio (click)="keuze = mogelijkheid" value="mogelijkheid"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <button ion-button (click)="valideren()">
+          Controleer
+      </button>
+
 </ion-content>

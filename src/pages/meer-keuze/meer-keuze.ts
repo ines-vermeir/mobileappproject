@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the MeerKeuzePage page.
@@ -14,26 +14,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'meer-keuze.html',
 })
 export class MeerKeuzePage {
-    lijstMogelijkheden = [];
     mogelijkheden = [];
-    correct;
-    feedback;
-    vraag;
-    isVisibleForm;
-    geselecteerd;
-    
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-      for (let entry of mogelijkheden) {
-          if (entry){
-              this.mogelijkheden.push(entry);
-          }
-      }
-      this.correct = correct;
-      this.feedback = feedback;
-      this.vraag = vraag;
-      this.isVisibleForm = false;
-      console.log(mogelijkheden);
-     
+    correct : string;
+    feedback : string;
+    vraag : string;
+    keuze = [];
+
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+      //data van home view
+      let stap = navParams.get('stap');
+      let poging = navParams.get('poging');
+
+      //werkwijze uit stap halen
+     Object.keys(stap.antwoord.mogelijkheden).forEach(key => {
+        if(stap.antwoord.mogelijkheden[key] != null){
+          this.mogelijkheden.push(stap.antwoord.mogelijkheden[key]);
+        }
+      });
+
+      console.log(stap.antwoord.mogelijkheden);
+
+      //feedback uit stap halen
+      this.feedback = stap.feedback;
+
+      //vraag uit stap halen
+      this.vraag = stap.vraag;
+
+      //correct antwoord
+      this.correct = stap.antwoord.correct;
   }
 
   ionViewDidLoad() {
@@ -41,44 +49,49 @@ export class MeerKeuzePage {
   }
 
     valideren(){
-        if (this.geselecteerd == this.correct){
-            console.log("nice");
-        }else{
-            alert(this.feedback)
-        }
+    //  var keuze : string;
+      console.log(this.keuze);
+    /*  Object.keys(this.keuze).forEach(key => {
+         keuze = key
+       });*/
+        if (this.correct == this.keuze){
+
+            let alert = this.alertCtrl.create({
+            title: 'Correct',
+            message: "Antwoord is correct!",
+            buttons: [
+              {
+                text: 'Volgende vraag',
+                handler: () => {
+                  this.navCtrl.pop();
+                }
+              }]
+          });
+          alert.present();
+          }else{
+            let alert = this.alertCtrl.create({
+            title: 'Feedback',
+            message: this.feedback,
+            buttons: [
+              {
+                text: 'stop',
+                role: 'cancel', //cancel of null(geen rol)
+                handler: () => {
+                  this.navCtrl.popToRoot();
+                }
+              },
+              {
+                text: 'probeer opnieuw',
+                handler: () => {
+                  //pagina blijft zoals het is
+                }
+              }
+            ]
+            });
+            alert.present();
+          }
+
     }
-    test(){
-        
-    }
-    setTest(mogelijkheid){
-        this.geselecteerd = mogelijkheid;
-    }
+
 
 }
-
-
-const lijst = [
-    {
-       "antwoord": {
-         "correct": "5 ml",
-         "mogelijkheden": [
-           null,
-           "10 ml",
-           "5 ml",
-           "15 ml"
-         ]
-       },
-       "feedback": "C1.V1 = C2.V2 ",
-       "type": "keuzevraag",
-       "vraag": "Maak een stockoplossing KMnO4 0,001 M (100 ml) uit een kant en klare 0,02 M oplossing. Hoeveel ml neem je uit de 0,02 M oplossing?"
-     }
-];
-const correct = "5 ml";
-const mogelijkheden = [
-           null,
-           "10 ml",
-           "5 ml",
-           "15 ml"
-         ];
-const feedback = "C1.V1 = C2.V2 ";
-const vraag = "Maak een stockoplossing KMnO4 0,001 M (100 ml) uit een kant en klare 0,02 M oplossing. Hoeveel ml neem je uit de 0,02 M oplossing?";

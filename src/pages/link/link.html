@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title>linkPage</ion-title>
   </ion-navbar>
 
@@ -14,5 +14,6 @@
 
 
 <ion-content padding>
-    <button ion-button (click)="openUrl()">{{naam}}</button>
+    <ion-title text-wrap>{{vraag}}</ion-title>
+    <button ion-button (click)="openUrl()">Open link</button>
 </ion-content>
