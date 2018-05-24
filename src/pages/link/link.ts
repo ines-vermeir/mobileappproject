@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the LinkPage page.
@@ -14,22 +14,47 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'link.html',
 })
 export class LinkPage {
-    link;
-    naam;
+    link : string;
+    vraag : string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.link = link;
-      this.naam = naam;
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+    //data van home view
+    let stap = navParams.get('stap');
+    let poging = navParams.get('poging');
+
+    //vraag uit stap halen
+    this.vraag = stap.vraag;
+
+    //correct antwoord
+    this.link = stap.link;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LinkPage');
   }
-    openUrl(){
-        window.open(link, '_system'); 
-    }
+
+  openUrl(){
+        window.open(this.link, '_system');
+        let alert = this.alertCtrl.create({
+        title: 'Volgende',
+        message: "Verder gaan met het labo?",
+        buttons: [
+          {
+            text: 'stop',
+            role: 'cancel', //cancel of null(geen rol)
+            handler: () => {
+              this.navCtrl.popToRoot();
+            }
+          },
+          {
+            text: 'OK',
+            handler: () => {
+              this.navCtrl.pop();
+            }
+          }
+        ]
+        });
+        alert.present();
+  }
 
 }
-
-const link = "https://www.erasmushogeschool.be/nl";
-const naam = "Eramus";

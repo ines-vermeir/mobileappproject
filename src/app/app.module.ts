@@ -10,12 +10,9 @@ import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { CommonModule } from '@angular/common';
-
-import { LabotafelPage } from '../pages/labotafel/labotafel';
 import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
-//import { LabotafelPage} from '../pages/labotafel/labotafel';
 import { LinkPage } from '../pages/link/link';
-//import { LabotafelPage} from '../pages/labotafel/labotafel'
+import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
 //import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -52,7 +49,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     MateriaalSelecterenPage,
     LabotafelPage,
     MeerKeuzePage,
-      LinkPage,
+    LinkPage,
     MateriaalWerkwijzePage,
     OverzichtPage,
     LoginPage
