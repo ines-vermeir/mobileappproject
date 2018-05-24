@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, AlertController, NavController, NavParams, ViewController, App } from 'ionic-angular';
+import { IonicPage, AlertController, NavController, NavParams, ViewController, App,  HttpModule } from 'ionic-angular';
 //import { MateriaalSelecterenPage } from '../materiaal-selecteren/materiaal-selecteren';
 /**
  * Generated class for the LabotafelPage page.
@@ -19,24 +19,35 @@ import { IonicPage, AlertController, NavController, NavParams, ViewController, A
 export class LabotafelPage {
 
   materiaalGeselecteerd = [];
-  url = [];
-  //plaats = [];
+  materialen = [];
+  svgs = [];
   materiaalCorrect = [];
   feedback : String;
   vraag : String;
+  poging : number;
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public appCtrl: App) {
     this.materiaalGeselecteerd = navParams.get('selected');
     var materiaal = navParams.get('antwoord');
     this.feedback = navParams.get('feedback');
     this.vraag = navParams.get('vraag');
+    this.materialen = navParams.get('dict');
+
+    for(let i = 0; i < this.materiaalGeselecteerd.length; i++){
+      for(let j = 0; j < this.materialen.length; j++){
+        if(this.materiaalGeselecteerd[i] == this.materialen[j].key){
+          this.svgs.push({
+            key:  this.materialen[j].key,
+            value:  this.materialen[j].value
+          });
+        }
+      }
+    }
+    console.log(this.materialen.find(x=>x.key == "analitischebalans").value);
 
     Object.keys(materiaal).forEach(key => {
         this.materiaalCorrect.push(key);
     });
-    console.log("****************************");
-    console.log(this.materiaalCorrect);
-      console.log("****************************");
   }
 
   ionViewDidLoad() {

@@ -76,7 +76,7 @@ export class OverzichtPage {
       //2. for loop met de stappen
       //3. poging elke keer op 0 zetten en correct op false
       //4. object van huidige stap opslaan
-      //X5. while loop om te controleren dat de stappen correct voltooid zijn (5pogingen)
+      //X. while loop om te controleren dat de stappen correct voltooid zijn (5pogingen)
       //6. switch case naar juiste pagina sturen adhv type vraag
       //7. naar de pagina wordt de stap doorgestuurd
 
@@ -99,9 +99,9 @@ export class OverzichtPage {
 
           //4. object van huidige stap opslaan
           stap = this.labo[stappen[i]];
-          console.log(stap);
-          console.log(stap.type);
-          //X5. while loop om te controleren dat de stappen correct voltooid zijn (5pogingen)
+          //console.log(stap);
+          //console.log(stap.type);
+          //X. while loop om te controleren dat de stappen correct voltooid zijn (5pogingen)
 
             //6. switch case naar juiste pagina sturen adhv type vraag
             //7. naar de pagina wordt de stap doorgestuurd
