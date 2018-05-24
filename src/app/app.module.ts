@@ -3,14 +3,23 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { CommonModule } from '@angular/common';
+
 import { LabotafelPage } from '../pages/labotafel/labotafel';
 import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
+import { LabotafelPage} from '../pages/labotafel/labotafel';
+import { LinkPage } from '../pages/link/link';
+import { LabotafelPage} from '../pages/labotafel/labotafel'
+import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
+import {OverzichtPage} from '../pages/overzicht/overzicht';
+
+
 
 @NgModule({
   declarations: [
@@ -19,12 +28,17 @@ import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
     MateriaalSelecterenPage,
     DragMateriaalDirective,
     LabotafelPage,
-    MeerKeuzePage
+    MeerKeuzePage,
+    LinkPage,
+    MateriaalWerkwijzePage,
+    OverzichtPage
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    CommonModule
+    CommonModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,8 +46,10 @@ import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
     HomePage,
     MateriaalSelecterenPage,
     LabotafelPage,
-    MeerKeuzePage
-
+    MeerKeuzePage,
+      LinkPage,
+    MateriaalWerkwijzePage,
+    OverzichtPage
   ],
   providers: [
     StatusBar,

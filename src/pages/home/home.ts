@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { MeerKeuzePage } from '../meer-keuze/meer-keuze';
+import { NavController, AlertController } from 'ionic-angular';
+
 
 
 @Component({
@@ -9,11 +9,8 @@ import { MeerKeuzePage } from '../meer-keuze/meer-keuze';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
 
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
   }
-    goToStap(){
-        console.log("test1")
-        this.navCtrl.push(MeerKeuzePage);
-    }
+
 }
