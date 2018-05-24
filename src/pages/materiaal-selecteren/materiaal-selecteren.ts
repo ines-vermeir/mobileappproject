@@ -33,9 +33,9 @@ export class MateriaalSelecterenPage {
     //werkwijze uit stap halen
     this.antwoord = stap.antwoord;
 
-    console.log("-----------------------------");
-    console.log(this.antwoord);
-    console.log("-----------------------------");
+    //console.log("-----------------------------");
+    //console.log(this.antwoord);
+    //console.log("-----------------------------");
 
     var self = this;
     var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
@@ -43,11 +43,16 @@ export class MateriaalSelecterenPage {
     $.get(url_s,function(data_o) {
     //console.log(data_o);
     var materialen = data_o.materialen;
-    //console.log(materialen);
+    console.log(materialen);
     //self.labos = overzicht;
     Object.keys(materialen).forEach(key => {
       //console.log(key);
-      self.materiaal.push(key);
+      //self.materiaal.push(key);
+      //self.svgs.push(materialen[key].url);
+      self.materiaal.push({
+        key: key,
+        value: materialen[key].url
+      });
       });
     });
     //console.log(this.materiaal);
@@ -101,6 +106,7 @@ export class MateriaalSelecterenPage {
       antwoord: this.antwoord,
       feedback: this.feedback,
       vraag: this.vraag,
+      dict: this.materiaal
     });
   }
 }

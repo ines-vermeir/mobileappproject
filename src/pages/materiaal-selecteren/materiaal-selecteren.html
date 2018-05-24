@@ -19,10 +19,22 @@
 
   <ion-list >
 
-  <ion-item *ngFor="let item of materiaal">
+  <!--<ion-item *ngFor="let item of materiaal">
     <ion-label>{{item}}</ion-label>
     <ion-checkbox [(ngModel)]="checkItems[item]"  value="item"  (ionChange)="print()"></ion-checkbox>
-  </ion-item>
+  </ion-item>-->
+
+  <ion-list>
+    <ion-item *ngFor="let item of materiaal">
+
+      <ion-thumbnail item-start>
+
+        <img src={{item.value}}>
+      </ion-thumbnail>
+        <ion-label>{{item.key}}</ion-label>
+        <ion-checkbox [(ngModel)]="checkItems[item.key]"  value="item.key"  (ionChange)="print()" clear item-end></ion-checkbox>
+    </ion-item>
+  </ion-list>
 
 <!-- ionChange: Call function when state changes [(ngModel)]="checkItems[item.naam]" -->
   <button ion-button (click)="pushPage()">

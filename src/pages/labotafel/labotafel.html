@@ -9,19 +9,18 @@
   <ion-navbar>
     <ion-title>labotafel</ion-title>
   </ion-navbar>
-  <button ion-button (click)="controle()" >
-         Controleer
-  </button>
 </ion-header >
 
+<ion-content>
 
-<ion-content padding class="background">
-<ion-title>{{vraag}}</ion-title>
+<button ion-button (click)="controle()" >
+       Controleer
+</button>
 
-  <div *ngFor="let item of materiaalGeselecteerd">
-    <ion-item>{{item}}</ion-item>
-
-    <img src="../../assets/imgs/{{item}}.jpg" alt="{{item}}" height="50" width="50" drag-materiaal startLeft="150" startTop="10"/>
+  <div *ngFor="let item of svgs" >
+        <img src={{item.value}} drag-materiaal startLeft="150" startTop="10">
+        <ion-label>{{item.key}}</ion-label>
   </div>
+
 
 </ion-content>
