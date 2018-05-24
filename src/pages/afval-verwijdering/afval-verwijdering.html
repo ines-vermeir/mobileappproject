@@ -20,7 +20,7 @@
                 
                 <ion-item *ngFor="let mogelijkheid of mogelijkheden">
                     
-                    <ion-label>{{mogelijkheid.naam}}<img src="../../assets/imgs/{{mogelijkheid.img}}"></ion-label>
+                    <ion-label><img src="../../assets/imgs/{{mogelijkheid.img}}"></ion-label>
                     <ion-radio name="antwoord" [value]="mogelijkheid" (ionSelect)="setTest(mogelijkheid)"></ion-radio>
                 </ion-item>
             </ion-list>
