@@ -10,9 +10,12 @@ import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { CommonModule } from '@angular/common';
+import { LabotafelPage} from '../pages/labotafel/labotafel';
+import { LinkPage } from '../pages/link/link';
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     MateriaalSelecterenPage,
     DragMateriaalDirective,
     LabotafelPage,
+      LinkPage,
     MateriaalWerkwijzePage,
     OverzichtPage
   ],
@@ -36,6 +40,7 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     HomePage,
     MateriaalSelecterenPage,
     LabotafelPage,
+      LinkPage,
     MateriaalWerkwijzePage,
     OverzichtPage
   ],

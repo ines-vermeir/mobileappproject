@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
+import { LinkPage } from '../pages/link/link';
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
 
@@ -15,7 +16,9 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
 })
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
+
   rootPage:any = OverzichtPage;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
