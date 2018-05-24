@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 
 
-let apiURL = "http://localhost:8080/PHP-Slim-Restful/api/";
+let apiURL = "http://dtsl.ehb.be/~stijn.rooselaers/PHP-Slim-Restful/api/index.php/";
 /*
   Generated class for the AuthServiceProvider provider.
 
