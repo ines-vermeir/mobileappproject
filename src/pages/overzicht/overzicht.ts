@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
 import {MateriaalSelecterenPage} from '../materiaal-selecteren/materiaal-selecteren';
 import {MateriaalWerkwijzePage} from '../materiaal-werkwijze/materiaal-werkwijze';
+import { MeerKeuzePage } from '../meer-keuze/meer-keuze';
+import { LinkPage } from '../link/link';
 /**
  * Generated class for the OverzichtPage page.
  *
@@ -22,7 +24,7 @@ export class OverzichtPage {
     keuzeLabo : String;
     labo = [];
 
-    constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
+    constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, private alertCtrl: AlertController) {
       var self = this;
       var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
       $.ajaxSetup({async:false});
@@ -61,6 +63,18 @@ export class OverzichtPage {
     }
 
     doLabo(){
+
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        duration: 2000,
+        showBackdrop: false,
+
+      });
+
+      loading.present();
+
+
       console.log("dolabo:");
       console.log(this.labo);
 
@@ -108,27 +122,37 @@ export class OverzichtPage {
 
             switch(stap.type){
               case "materiaal":
-                this.navCtrl.push(MateriaalSelecterenPage, {
+               this.navCtrl.push(MateriaalSelecterenPage, {
                   stap: stap,
                   poging: pogingen
                 }, {animate: false}
-                );
+              );
                 //this.navCtrl.setRoot(MateriaalWerkwijzePage, {}, {animate: false, direction: 'forward'});
-                console.log("switch materiaal");
+                //console.log("switch materiaal");
                 break;
               case "chronologische volgorde":
                 this.navCtrl.push(MateriaalWerkwijzePage, {
                   stap: stap,
                   poging: pogingen
                 }, {animate: false}
-                );
-                console.log("switch chronologische");
+              );
+                //console.log("switch chronologische");
                 break;
               case "keuzevraag":
-                console.log("switch keuzevraag");
+                this.navCtrl.push(MeerKeuzePage, {
+                  stap: stap,
+                  poging: pogingen
+                }, {animate: false}
+                );
+                //console.log("switch keuzevraag");
                 break;
               case "link":
-                console.log("switch link");
+                this.navCtrl.push(LinkPage, {
+                  stap: stap,
+                  poging: pogingen
+                }, {animate: false}
+                );
+                //console.log("switch link");
                 break;
               case "afvalverwijdering":
                 console.log("switch afvalverwijdering");
@@ -140,6 +164,7 @@ export class OverzichtPage {
                   buttons: ['Ok']
                 });
                 alert.present();
+                this.navCtrl.popToRoot();
                 break;
             }
       }
