@@ -23,8 +23,12 @@ export class OverzichtPage {
     labos = [];
     keuzeLabo : String;
     labo = [];
+    public userDetails:any;
 
     constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, private alertCtrl: AlertController) {
+      const data = JSON.parse(localStorage.getItem('userData'));
+      this.userDetails = data.userData;
+
       var self = this;
       var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
       $.ajaxSetup({async:false});
@@ -38,6 +42,14 @@ export class OverzichtPage {
         self.labos.push(key);
         });
       });
+    }
+
+    logout(){
+      localStorage.clear();
+      this.backToLogin();
+    }
+    backToLogin(){
+      this.navCtrl.popToRoot();
     }
 
     controle(keuzeLabo: string){

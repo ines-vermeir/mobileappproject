@@ -12,6 +12,7 @@ import { LinkPage } from '../pages/link/link';
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
 import { LoginPage } from '../pages/login/login';
+import { DragulaModule } from 'ng2-dragula';
 
 @Component({
   templateUrl: 'app.html'

@@ -19,7 +19,7 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
 import { LoginPage } from "../pages/login/login";
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
-
+import { DragulaModule } from 'ng2-dragula';
 
 
 @NgModule({
@@ -35,12 +35,14 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     OverzichtPage,
     LoginPage
 
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CommonModule,
-    HttpModule
+    HttpModule,
+    DragulaModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

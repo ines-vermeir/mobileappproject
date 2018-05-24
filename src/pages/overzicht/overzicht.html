@@ -8,6 +8,11 @@
 
   <ion-navbar>
     <ion-title>overzicht</ion-title>
+    <h5>Wecome to {{userDetails.voornaam}} {{userDetails.achternaam}}   </h5>
+    <h5>Uw ID is: {{userDetails.id}}</h5>
+    <h5> uw Email is: {{userDetails.email}} </h5>
+    <button ion-button item-end color="primary"(click)="logout()">Logout
+      </button>
   </ion-navbar>
 
 </ion-header>

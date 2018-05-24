@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { HomePage } from '../home/home';
+import { OverzichtPage } from '../overzicht/overzicht';
 
 /**
  * Generated class for the LoginPage page.
@@ -25,28 +25,30 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   login(){
-  
+
     if(this.userData.email && this.userData.password){
       this.authServiceProvider.postData(this.userData, "login").then((result) =>{
         this.responseData=result;
         console.log(this.responseData);
         if(this.responseData.userData){
           localStorage.setItem('userData', JSON.stringify(this.responseData) )
-          this.navCtrl.push(HomePage);
+          this.navCtrl.push(OverzichtPage,
+            
+          );
         }
         else{
           this.presentToast("Please give valid email and password");
         }
-        
-        
+
+
       }, (err)=>{
-  
+
       });
     }
     else{
       this.presentToast("give username and password");
     }
-   
+
 
   }
   presentToast(msg) {
