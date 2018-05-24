@@ -51,17 +51,18 @@ export class AfvalVerwijderingPage {
         this.geselecteerd = mogelijkheid;
     }
 
+    
 }
 
 const correct = "bruine fles";
 const mogelijkheden = [
-           null,
-           "bidon1",
-           "bidon2",
-           "bidon3",
-            "bidon4",
-            "bidon5",
-            "bruine fles"
+          
+            {naam: "bidon1", img: "fout.png"},
+            {naam: "bidon2", img: "fout.png"},
+            {naam: "bidon3", img: "fout.png"},
+            {naam: "bidon4", img: "fout.png"},
+            {naam: "bidon5", img: "fout.png"},
+            {naam: "bruine fles", img:"juist.jpg"}
          ];
 const feedback = "C1.V1 = C2.V2 ";
 const vraag = "Zoekt de juiste bidon.";
