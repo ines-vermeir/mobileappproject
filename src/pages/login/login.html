@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Labo Oefenen App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content padding>
+
+    <ion-grid>
+
+      <ion-list>
+
+        <!--
+         Beaker icon
+         -->
+        <ion-row justify-content-center margin-vertical>
+          <ion-col col-10 col-lg-7 text-center margin-vertical>
+            <img src="../../assets/imgs/beaker-icon.svg">
+          </ion-col>
+        </ion-row>
+
+        <!--
+         User input & password
+         -->
+        <ion-row justify-content-center>
+          <ion-col col-10 col-lg-7 class="home-input">
+            <ion-item no-lines>
+              <ion-label color="light" floating>E-mail</ion-label>
+              <ion-input class="test-input" type="text" value="" [(ngModel)]="userData.email"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-10  col-lg-7 class="home-input">
+            <ion-item no-lines>
+              <ion-label color="light" floating>Wachtwoord</ion-label>
+              <ion-input type="password" value="" [(ngModel)]="userData.password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <!--
+         Submit button
+         -->
+        <ion-row justify-content-center margin-top>
+          <ion-col col-10 col-lg-7 text-center margin-top>
+            <button ion-button round large class="home-button" (click)="login()" >Log in</button>
+          </ion-col>
+        </ion-row>
+
+      </ion-list>
+
+    </ion-grid>
+
+</ion-content>
