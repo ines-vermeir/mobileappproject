@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, AlertController, NavController, NavParams, ViewController, App,  HttpModule } from 'ionic-angular';
+import { IonicPage, AlertController, NavController, NavParams, ViewController, App/*,  HttpModule*/ } from 'ionic-angular';
 //import { MateriaalSelecterenPage } from '../materiaal-selecteren/materiaal-selecteren';
 /**
  * Generated class for the LabotafelPage page.
@@ -85,6 +85,7 @@ export class LabotafelPage {
     });
     alert.present();
     }else{
+      
       let alert = this.alertCtrl.create({
       title: 'Feedback',
       message: this.feedback,
@@ -105,6 +106,7 @@ export class LabotafelPage {
       ]
       });
       alert.present();
+      
     }
   }
 

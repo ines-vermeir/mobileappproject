@@ -13,11 +13,15 @@ import { CommonModule } from '@angular/common';
 
 import { LabotafelPage } from '../pages/labotafel/labotafel';
 import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
-import { LabotafelPage} from '../pages/labotafel/labotafel';
+//import { LabotafelPage} from '../pages/labotafel/labotafel';
 import { LinkPage } from '../pages/link/link';
-import { LabotafelPage} from '../pages/labotafel/labotafel'
+//import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
+//import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { LoginPage } from "../pages/login/login";
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+
 
 
 
@@ -31,7 +35,8 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     MeerKeuzePage,
     LinkPage,
     MateriaalWerkwijzePage,
-    OverzichtPage
+    OverzichtPage,
+    LoginPage
 
   ],
   imports: [
@@ -49,12 +54,14 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     MeerKeuzePage,
       LinkPage,
     MateriaalWerkwijzePage,
-    OverzichtPage
+    OverzichtPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

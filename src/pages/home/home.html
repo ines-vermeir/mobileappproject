@@ -1,11 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title text-center>
+      Labo Oefenen App
     </ion-title>
+    <ion-buttons end> 
+    <button ion-button item-end color="primary"(click)="logout()">Logout
+      </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+  <ion-content padding>
+
+    <h2>Wecome to {{userDetails.voornaam}} {{userDetails.achternaam}}   </h2>
+    <h2>Uw ID is: {{userDetails.id}}</h2>
+    <h2> uw Email is: {{userDetails.email}} </h2>
 
 </ion-content>

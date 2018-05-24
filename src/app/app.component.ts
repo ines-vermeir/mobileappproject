@@ -11,6 +11,7 @@ import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
 import { LinkPage } from '../pages/link/link';
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
 export class MyApp {
   //@ViewChild('myNav') nav: NavController
 
-  rootPage:any = OverzichtPage;
+  rootPage:any = LoginPage;
 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
