@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -11,6 +12,10 @@ import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materi
 import { CommonModule } from '@angular/common';
 import { LabotafelPage} from '../pages/labotafel/labotafel';
 import { LinkPage } from '../pages/link/link';
+import { LabotafelPage} from '../pages/labotafel/labotafel'
+import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
+import {OverzichtPage} from '../pages/overzicht/overzicht';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +24,15 @@ import { LinkPage } from '../pages/link/link';
     MateriaalSelecterenPage,
     DragMateriaalDirective,
     LabotafelPage,
-      LinkPage
+      LinkPage,
+    MateriaalWerkwijzePage,
+    OverzichtPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    CommonModule
+    CommonModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,8 +40,9 @@ import { LinkPage } from '../pages/link/link';
     HomePage,
     MateriaalSelecterenPage,
     LabotafelPage,
-      LinkPage
-
+      LinkPage,
+    MateriaalWerkwijzePage,
+    OverzichtPage
   ],
   providers: [
     StatusBar,
