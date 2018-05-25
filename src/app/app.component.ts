@@ -14,7 +14,7 @@ import { Keuze_oefening } from "../pages/keuze_oefening/keuze_oefening";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = Keuze_oefening;
+  rootPage:any = OefeningenPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
