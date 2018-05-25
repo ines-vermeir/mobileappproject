@@ -78,11 +78,17 @@ export class OverzichtPage {
 
 
       let loading = this.loadingCtrl.create({
-        spinner: 'bubbles',
+        spinner: 'hide',
         duration: 2000,
-        showBackdrop: false,
-
+        content: '<div class="loading-overlay loading-hidden"><img src="../../assets/imgs/beaker-icon.svg" alt="loading icon"> </div>',
       });
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'hide',
+        content: `
+        <div class="loading-overlay loading-hidden"><img src="../../assets/imgs/beaker-icon.svg" alt="loading icon"> </div>`,
+          duration: 2000
+        });
 
       loading.present();
 
@@ -134,11 +140,11 @@ export class OverzichtPage {
 
             switch(stap.type){
               case "materiaal":
-               this.navCtrl.push(MateriaalSelecterenPage, {
+              /* this.navCtrl.push(MateriaalSelecterenPage, {
                   stap: stap,
                   poging: pogingen
                 }, {animate: false}
-              );
+              );*/
                 //this.navCtrl.setRoot(MateriaalWerkwijzePage, {}, {animate: false, direction: 'forward'});
                 //console.log("switch materiaal");
                 break;

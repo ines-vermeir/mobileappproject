@@ -6,25 +6,32 @@
 -->
 
 <ion-header>
-    <ion-navbar  hideBackButton>
-    <ion-title>Meer keuze vraag</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title text-center >
+      Meerkeuze
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-      <ion-title text-wrap>{{vraag}}</ion-title>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 class="oefening-keuze-uitleg" text-wrap>{{vraag}}</ion-col>
+    </ion-row>
+    <ion-row class="oefening-keuze">
 
-      <ion-list>
-        <ion-item *ngFor="let mogelijkheid of mogelijkheden">
-            <ion-label>{{mogelijkheid}}</ion-label>
-            <ion-radio (click)="keuze = mogelijkheid" value="mogelijkheid"></ion-radio>
+      <ion-list col-12 text-center radio-group class="oefening-keuze-container" [(ngModel)]="relationship" >
+        <ion-item *ngFor="let mogelijkheid of mogelijkheden"  text-center class="oefening-keuze-option" no-lines text-wrap>
+              <ion-label>{{mogelijkheid}}</ion-label>
+              <ion-radio (click)="keuze = mogelijkheid" value="{{mogelijkheid}}"></ion-radio>
+            </ion-item>
+        <ion-item text-center class="oefening-keuze-button" no-lines>
+          <button  (click)="valideren()"  ion-button block outline>
+              Controleer
+            </button>
         </ion-item>
-      </ion-list>
-
-      <button ion-button (click)="valideren()">
-          Controleer
-      </button>
+        </ion-list>
+    </ion-row>
+</ion-grid>
 
 </ion-content>
