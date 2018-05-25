@@ -144,7 +144,7 @@ export class MateriaalWerkwijzePage {
           text: 'stop',
           role: 'cancel', //cancel of null(geen rol)
           handler: () => {
-            this.navCtrl.popToRoot();
+              this.navCtrl.popTo( this.navCtrl.getByIndex(1));
           }
         },
         {

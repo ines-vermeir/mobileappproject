@@ -15,7 +15,11 @@ import { LinkPage } from '../pages/link/link';
 import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
+//import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { LoginPage } from "../pages/login/login";
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
+import { DragulaModule } from 'ng2-dragula';
 
 
 @NgModule({
@@ -28,14 +32,17 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     MeerKeuzePage,
     LinkPage,
     MateriaalWerkwijzePage,
-    OverzichtPage
+    OverzichtPage,
+    LoginPage
+
 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CommonModule,
-    HttpModule
+    HttpModule,
+    DragulaModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,12 +53,14 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
     MeerKeuzePage,
     LinkPage,
     MateriaalWerkwijzePage,
-    OverzichtPage
+    OverzichtPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

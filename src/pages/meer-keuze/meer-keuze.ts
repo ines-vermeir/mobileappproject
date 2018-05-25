@@ -49,11 +49,6 @@ export class MeerKeuzePage {
   }
 
     valideren(){
-    //  var keuze : string;
-      console.log(this.keuze);
-    /*  Object.keys(this.keuze).forEach(key => {
-         keuze = key
-       });*/
         if (this.correct == this.keuze){
 
             let alert = this.alertCtrl.create({
@@ -77,7 +72,7 @@ export class MeerKeuzePage {
                 text: 'stop',
                 role: 'cancel', //cancel of null(geen rol)
                 handler: () => {
-                  this.navCtrl.popToRoot();
+                    this.navCtrl.popTo( this.navCtrl.getByIndex(1));
                 }
               },
               {
