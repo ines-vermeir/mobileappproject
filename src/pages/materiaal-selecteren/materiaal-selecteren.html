@@ -24,6 +24,7 @@
     <ion-checkbox [(ngModel)]="checkItems[item]"  value="item"  (ionChange)="print()"></ion-checkbox>
   </ion-item>-->
 
+<!--
   <ion-list>
     <ion-item *ngFor="let item of materiaal">
 
@@ -35,11 +36,35 @@
         <ion-checkbox [(ngModel)]="checkItems[item.key]"  value="item.key"  (ionChange)="print()" clear item-end></ion-checkbox>
     </ion-item>
   </ion-list>
-
-<!-- ionChange: Call function when state changes [(ngModel)]="checkItems[item.naam]" -->
   <button ion-button (click)="pushPage()">
        Labotafel
      </button>
+   -->
+<!-- ionChange: Call function when state changes [(ngModel)]="checkItems[item.naam]" -->
 
+<button ion-button (click)="controle()" >
+       Controleer
+</button>
+<div class="container ng-isolate-scope" dragula="first-bag">
+
+  <div *ngFor="let item of materiaal">
+    <ion-thumbnail item-start  >
+            <img src={{item.value}} height="50" width="50">
+            {{ item.key }}
+      </ion-thumbnail>
+  </div>
+
+</div>
+
+<div class="container ng-isolate-scope" dragula="first-bag">
+
+  <div *ngFor="let item of checkItems">
+    <ion-thumbnail item-start>
+            <img src={{item.value}} height="50" width="50">
+            {{ item.key }}
+      </ion-thumbnail>
+  </div>
+
+</div>
   </ion-list>
 </ion-content>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LabotafelPage } from '../labotafel/labotafel';
 import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 /**
  * Generated class for the MateriaalSelecterenPage page.
@@ -25,7 +26,7 @@ export class MateriaalSelecterenPage {
   vraag : String;
   antwoord = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private dragulaService: DragulaService, public navCtrl: NavController, public navParams: NavParams) {
     //data van home view
     let stap = navParams.get('stap');
     let poging = navParams.get('poging');
@@ -64,6 +65,12 @@ export class MateriaalSelecterenPage {
     //vraag uit stap halen
     this.vraag = stap.vraag;
     //console.log(this.vraag);
+
+
+    dragulaService.drop.subscribe(value => {
+      const [bagName, e, el] = value;
+      console.log('id is:', e.dataset.id);
+    });
   }
 
 
@@ -80,7 +87,7 @@ export class MateriaalSelecterenPage {
     console.log(this.checkItems);
   }
 
-  pushPage(){
+  /*pushPage(){
     // push another page onto the navigation stack
     // causing the nav controller to transition to the new page
     // optional data can also be passed to the pushed page.
@@ -108,5 +115,60 @@ export class MateriaalSelecterenPage {
       vraag: this.vraag,
       dict: this.materiaal
     });
+  }*/
+
+  controle(){/*
+    let correct = false;
+    if(this.materiaalCorrect.length === this.materiaalGeselecteerd.length){
+      let juist = 0;
+      for(let i = 0; i < this.materiaalCorrect.length; i++){
+        for(let j = 0; j < this.materiaalGeselecteerd.length; j++){
+          if(this.materiaalCorrect[i] == this.materiaalGeselecteerd[j]){
+            juist++;
+          }
+        }
+      }
+      if(juist === this.materiaalCorrect.length){
+        correct = true;
+      }
+    }
+
+    if(correct){
+      let alert = this.alertCtrl.create({
+      title: 'Correct',
+      message: "Antwoord is correct!",
+      buttons: [
+        {
+          text: 'Volgende vraag',
+          handler: () => {
+            this.navCtrl.popTo(this.navCtrl.getActive().index - 2);
+          }
+        }]
+    });
+    alert.present();
+    }else{
+
+      let alert = this.alertCtrl.create({
+      title: 'Feedback',
+      message: this.feedback,
+      buttons: [
+        {
+          text: 'stop',
+          role: 'cancel', //cancel of null(geen rol)
+          handler: () => {
+            this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+          }
+        },
+        {
+          text: 'probeer opnieuw',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+      });
+      alert.present();
+
+    }*/
   }
 }
