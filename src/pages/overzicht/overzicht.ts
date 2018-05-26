@@ -39,7 +39,10 @@ export class OverzichtPage {
       //self.labos = overzicht;
       Object.keys(overzicht).forEach(key => {
         console.log(key);
-        self.labos.push(key);
+        self.labos.push({
+            labo: key,
+            desc: overzicht[key].beschrijving
+          });
         });
       });
     }
@@ -74,25 +77,22 @@ export class OverzichtPage {
         self.doLabo();
     }
 
-    doLabo(){
-
-
+    showLoading(){
       let loading = this.loadingCtrl.create({
-        spinner: 'hide',
-        duration: 2000,
-        content: '<div class="loading-overlay loading-hidden"><img src="../../assets/imgs/beaker-icon.svg" alt="loading icon"> </div>',
+     spinner: 'hide',
+     content: `
+      <div class="loading-overlay">
+         <img src="../../assets/imgs/beaker-icon.svg" alt="loading icon">
+       </div>
+       `,
+     duration: 2000
       });
 
-      let loading = this.loadingCtrl.create({
-        spinner: 'hide',
-        content: `
-        <div class="loading-overlay loading-hidden"><img src="../../assets/imgs/beaker-icon.svg" alt="loading icon"> </div>`,
-          duration: 2000
-        });
-
       loading.present();
+    }
 
-
+    doLabo(){
+      this.showLoading();
       console.log("dolabo:");
       console.log(this.labo);
 
@@ -140,11 +140,11 @@ export class OverzichtPage {
 
             switch(stap.type){
               case "materiaal":
-              /* this.navCtrl.push(MateriaalSelecterenPage, {
+               this.navCtrl.push(MateriaalSelecterenPage, {
                   stap: stap,
                   poging: pogingen
                 }, {animate: false}
-              );*/
+              );
                 //this.navCtrl.setRoot(MateriaalWerkwijzePage, {}, {animate: false, direction: 'forward'});
                 //console.log("switch materiaal");
                 break;

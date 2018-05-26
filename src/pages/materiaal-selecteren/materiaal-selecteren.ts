@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LabotafelPage } from '../labotafel/labotafel';
 import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
@@ -22,23 +22,23 @@ export class MateriaalSelecterenPage {
 
   materiaal = [];
   checkItems = [];
-  feedback : String;
-  vraag : String;
+  feedback : string;
+  vraag : string;
   antwoord = [];
 
-  constructor(private dragulaService: DragulaService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController,private dragulaService: DragulaService, public navCtrl: NavController, public navParams: NavParams) {
     //data van home view
     let stap = navParams.get('stap');
     let poging = navParams.get('poging');
-
-    //werkwijze uit stap halen
-    this.antwoord = stap.antwoord;
-
-    //console.log("-----------------------------");
-    //console.log(this.antwoord);
-    //console.log("-----------------------------");
-
     var self = this;
+
+    //antwoord uit stap halen
+  Object.keys(stap.antwoord).forEach(key => {
+      self.antwoord.push(key);
+    });
+
+
+    //haal alle materialen op
     var url_s = "https://ceb1f13c-d64d-4ddc-a4b4-12833d7843eb-bluemix.cloudant.com/projectmobileapps/c0a82b412d43ff4cbb362eccfef0d002";
     $.ajaxSetup({async:false});
     $.get(url_s,function(data_o) {
@@ -67,10 +67,11 @@ export class MateriaalSelecterenPage {
     //console.log(this.vraag);
 
 
-    dragulaService.drop.subscribe(value => {
+    /*dragulaService.drop.subscribe(value => {
+
       const [bagName, e, el] = value;
       console.log('id is:', e.dataset.id);
-    });
+    });*/
   }
 
 
@@ -87,48 +88,31 @@ export class MateriaalSelecterenPage {
     console.log(this.checkItems);
   }
 
-  /*pushPage(){
-    // push another page onto the navigation stack
-    // causing the nav controller to transition to the new page
-    // optional data can also be passed to the pushed page.
-
+  controle(){
     var array = [];
-    console.log('-------- checked items:');
-    console.log(this.checkItems);
+  //  console.log('-------- checked items:');
+  //  console.log(this.checkItems);
 
-    console.log('-------- key :');
+    //console.log('-------- key :');
     Object.keys(this.checkItems).forEach(key => {
-      console.log(key);
+  //    console.log(key);
       if (this.checkItems[key] == true) {
         array.push(key);
       }
     });
-
-    console.log('-------- array :');
-    console.log(array);
-    console.log('-------- next page :');
-
-    this.navCtrl.push(LabotafelPage, {
-      selected: array,
-      antwoord: this.antwoord,
-      feedback: this.feedback,
-      vraag: this.vraag,
-      dict: this.materiaal
-    });
-  }*/
-
-  controle(){/*
     let correct = false;
-    if(this.materiaalCorrect.length === this.materiaalGeselecteerd.length){
+    console.log(this.antwoord.length);
+    console.log(array.length);
+    if(this.antwoord.length === array.length){
       let juist = 0;
-      for(let i = 0; i < this.materiaalCorrect.length; i++){
-        for(let j = 0; j < this.materiaalGeselecteerd.length; j++){
-          if(this.materiaalCorrect[i] == this.materiaalGeselecteerd[j]){
+      for(let i = 0; i < this.antwoord.length; i++){
+        for(let j = 0; j < array.length; j++){
+          if(this.antwoord[i] == array[j]){
             juist++;
           }
         }
       }
-      if(juist === this.materiaalCorrect.length){
+      if(juist === this.antwoord.length){
         correct = true;
       }
     }
@@ -141,7 +125,7 @@ export class MateriaalSelecterenPage {
         {
           text: 'Volgende vraag',
           handler: () => {
-            this.navCtrl.popTo(this.navCtrl.getActive().index - 2);
+            this.navCtrl.pop();
           }
         }]
     });
@@ -162,13 +146,13 @@ export class MateriaalSelecterenPage {
         {
           text: 'probeer opnieuw',
           handler: () => {
-            this.navCtrl.pop();
+            //this.navCtrl.pop();
           }
         }
       ]
       });
       alert.present();
 
-    }*/
+    }
   }
 }

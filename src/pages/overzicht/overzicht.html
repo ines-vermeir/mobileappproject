@@ -32,19 +32,15 @@
 </ion-header>
 
 
-
 <!--Voeg loading-hidden toe aan de class om de loader te verwijderen-->
-<div class="loading-overlay loading-hidden">
-  <img src="../../assets/imgs/beaker-icon.svg" alt="loading icon">
-</div>
-
 <ion-content padding>
+
   <ion-grid class="oefeningen-grid" no-margin>
     <ion-row margin-vertical class="oefening-tabel-header">
       <ion-col col-9>Opdracht</ion-col>
     </ion-row>
-    <ion-row margin-vertical class="oefening" *ngFor="let labo of labos" (click)="controle(labo)">
-      <ion-col col-12 text-left class="oefening-gedaan">{{labo}}</ion-col>
+    <ion-row margin-vertical class="oefening" *ngFor="let labo of labos" (click)="controle(labo.labo)">
+      <ion-col col-12 text-left class="oefening-gedaan">{{labo.desc}}</ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
