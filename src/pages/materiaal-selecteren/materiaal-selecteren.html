@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar hideBackButton >
-    <ion-title>MateriaalSelecteren</ion-title>
+    <ion-title text-center>Materiaal Selecteren</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,9 +15,6 @@
 
 <ion-content padding>
 
-<ion-title>{{vraag}}</ion-title>
-
-  <ion-list >
 
   <!--<ion-item *ngFor="let item of materiaal">
     <ion-label>{{item}}</ion-label>
@@ -41,7 +38,10 @@
      </button>
    -->
 <!-- ionChange: Call function when state changes [(ngModel)]="checkItems[item.naam]" -->
+<!--
+<ion-title>{{vraag}}</ion-title>
 
+  <ion-list >
 <button ion-button (click)="controle()" >
        Controleer
 </button>
@@ -66,5 +66,26 @@
   </div>
 
 </div>
-  </ion-list>
+</ion-list>-->
+
+  <ion-grid no-margin>
+   <ion-row class="oefening-uitleg">
+     <ion-col col-12>{{vraag}}
+     </ion-col>
+    </ion-row>
+   <ion-row margin-vertical align-items-center class="oefening-materiaal-grid" >
+     <ion-col col-3 text-center class="oefening-materiaal" *ngFor="let item of materiaal" >
+         <img src={{item.value}} height="50" width="50"  >
+         <br>
+         <ion-label>{{item.key}}</ion-label>
+         <br>
+      <ion-checkbox [(ngModel)]="checkItems[item.key]" value="item.key" (ionChange)="print()"></ion-checkbox>
+     </ion-col>
+   </ion-row>
+   <ion-row class="oefening-orden-option">
+     <button  (click)="controle()"  ion-button block outline>
+       Controleer
+     </button>
+   </ion-row>
+ </ion-grid>
 </ion-content>

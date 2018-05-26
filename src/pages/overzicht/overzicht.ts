@@ -39,7 +39,10 @@ export class OverzichtPage {
       //self.labos = overzicht;
       Object.keys(overzicht).forEach(key => {
         console.log(key);
-        self.labos.push(key);
+        self.labos.push({
+            labo: key,
+            desc: overzicht[key].beschrijving
+          });
         });
       });
     }
@@ -74,19 +77,22 @@ export class OverzichtPage {
         self.doLabo();
     }
 
-    doLabo(){
-
-
+    showLoading(){
       let loading = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        duration: 2000,
-        showBackdrop: false,
-
+     spinner: 'hide',
+     content: `
+      <div class="loading-overlay">
+         <img src="../../assets/imgs/beaker-icon.svg" alt="loading icon">
+       </div>
+       `,
+     duration: 2000
       });
 
       loading.present();
+    }
 
-
+    doLabo(){
+      this.showLoading();
       console.log("dolabo:");
       console.log(this.labo);
 

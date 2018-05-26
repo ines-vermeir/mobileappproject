@@ -49,7 +49,11 @@ export class MeerKeuzePage {
   }
 
     valideren(){
-        if (this.correct == this.keuze){
+      var keuze;
+      Object.keys( this.keuze).forEach(key => {
+         keuze = key
+       });
+        if (this.correct == keuze){
 
             let alert = this.alertCtrl.create({
             title: 'Correct',
