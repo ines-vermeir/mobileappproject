@@ -12,12 +12,12 @@ import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materi
 import { CommonModule } from '@angular/common';
 import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
 import { LinkPage } from '../pages/link/link';
-import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-werkwijze';
 import {OverzichtPage} from '../pages/overzicht/overzicht';
 //import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { LoginPage } from "../pages/login/login";
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AfvalverwijderingPage } from '../pages/afvalverwijdering/afvalverwijdering';
 
 import { DragulaModule } from 'ng2-dragula';
 
@@ -28,13 +28,12 @@ import { DragulaModule } from 'ng2-dragula';
     HomePage,
     MateriaalSelecterenPage,
     DragMateriaalDirective,
-    LabotafelPage,
     MeerKeuzePage,
     LinkPage,
     MateriaalWerkwijzePage,
     OverzichtPage,
-    LoginPage
-
+    LoginPage,
+    AfvalverwijderingPage
 
   ],
   imports: [
@@ -49,12 +48,12 @@ import { DragulaModule } from 'ng2-dragula';
     MyApp,
     HomePage,
     MateriaalSelecterenPage,
-    LabotafelPage,
     MeerKeuzePage,
     LinkPage,
     MateriaalWerkwijzePage,
     OverzichtPage,
-    LoginPage
+    LoginPage,
+    AfvalverwijderingPage
   ],
   providers: [
     StatusBar,

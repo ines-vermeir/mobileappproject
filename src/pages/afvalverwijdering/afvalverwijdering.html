@@ -1,0 +1,37 @@
+<!--
+  Generated template for the AfvalverwijderingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton >
+    <ion-title text-center>Afval verwijderen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-grid>
+   <ion-row>
+     <ion-col col-12 class="oefening-keuze-uitleg" text-wrap>{{vraag}}</ion-col>
+   </ion-row>
+   <ion-row class="oefening-keuze">
+     <ion-col col-12 text-center class="oefening-materiaal">
+     <ion-list col-12 text-center radio-group class="oefening-keuze-container" [(ngModel)]="relationship" >
+       <ion-item *ngFor="let mogelijkheid of mogelijkheden"  text-center class="oefening-keuze-option" no-lines text-wrap>
+             <ion-label><img src={{mogelijkheid.img}} height="50" width="50"><br>{{mogelijkheid.naam}}</ion-label>
+             <ion-radio (click)="keuze = mogelijkheid.naam" value="{{mogelijkheid.naam}}"></ion-radio>
+           </ion-item>
+       <ion-item text-center class="oefening-keuze-button" no-lines>
+         <button  (click)="controle()"  ion-button block outline>
+             Controleer
+           </button>
+       </ion-item>
+       </ion-list>
+      </ion-col>
+   </ion-row>
+</ion-grid>
+</ion-content>

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { LabotafelPage } from '../labotafel/labotafel';
-import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 

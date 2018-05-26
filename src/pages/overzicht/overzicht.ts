@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController,ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
 import {MateriaalSelecterenPage} from '../materiaal-selecteren/materiaal-selecteren';
 import {MateriaalWerkwijzePage} from '../materiaal-werkwijze/materiaal-werkwijze';
 import { MeerKeuzePage } from '../meer-keuze/meer-keuze';
 import { LinkPage } from '../link/link';
+import { AfvalverwijderingPage } from '../afvalverwijdering/afvalverwijdering';
 /**
  * Generated class for the OverzichtPage page.
  *
@@ -25,7 +26,7 @@ export class OverzichtPage {
     labo = [];
     public userDetails:any;
 
-    constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, private alertCtrl: AlertController) {
+    constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, private alertCtrl: AlertController, public toastCtrl:ToastController) {
       const data = JSON.parse(localStorage.getItem('userData'));
       this.userDetails = data.userData;
 
@@ -76,12 +77,13 @@ export class OverzichtPage {
         });
         self.doLabo();
     }
-
+// class="loading-overlay"
     showLoading(){
       let loading = this.loadingCtrl.create({
      spinner: 'hide',
+     cssClass: "loading-overlay",
      content: `
-      <div class="loading-overlay">
+      <div >
          <img src="../../assets/imgs/beaker-icon.svg" alt="loading icon">
        </div>
        `,
@@ -100,6 +102,7 @@ export class OverzichtPage {
       var stappen = [];
       var pogingen = 0;
       var stap = [];
+    //  var stap = (params: string): Observable<any> ;
       var correct = false;
 
       var self = this;
@@ -139,7 +142,7 @@ export class OverzichtPage {
             //7. naar de pagina wordt de stap doorgestuurd
 
             switch(stap.type){
-              case "materiaal":
+            /*  case "materiaal":
                this.navCtrl.push(MateriaalSelecterenPage, {
                   stap: stap,
                   poging: pogingen
@@ -171,21 +174,27 @@ export class OverzichtPage {
                 }, {animate: false}
                 );
                 //console.log("switch link");
-                break;
+                break;*/
               case "afvalverwijdering":
-                console.log("switch afvalverwijdering");
+                this.navCtrl.push(AfvalverwijderingPage, {
+                  stap: stap,
+                  poging: pogingen
+                }, {animate: false}
+                );
                 break;
               default:
-                let alert = this.alertCtrl.create({
-                  title: 'Error!',
-                  subTitle: 'Oefening kan niet worden getoond.',
-                  buttons: ['Ok']
-                });
-                alert.present();
-                this.navCtrl.popToRoot();
+                this.presentToast("Error: oefeningen konden niet worden geladen ");
+                //  this.navCtrl.popTo( this.navCtrl.getByIndex(1));
                 break;
             }
       }
+  }
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 100
+    });
+    toast.present();
   }
 
 }
