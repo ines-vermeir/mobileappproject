@@ -124,6 +124,7 @@
 }
 
 .oefening-blocked{
+  pointer-events: none;
   color: #FC9999;
 }
 
@@ -206,45 +207,27 @@
 }
 
 .loading-overlay{
+  ion-backdrop {
+        top: 15%;
+        height: 100%;
+        background-color: white;
+        //z-index: 2000;
+    }
   position: absolute !important;
-  height: 1000%;
-  width: 1000%;
-  background-color: #EBEBEB;
-  z-index: 999;
+  top:0!important;
+  bottom: 0!important;
+  left: 0!important;
+  right: 0!important;
+  /*height: 1000%;
+  width: 1000%;*/
+  background-color: #FFF;
+  /*z-index: 999;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-
- top:0 !important;
- bottom: 0 !important;
- left: 0 !important;
- right: 0 !important;
- padding: 0 !important;
- border-radius: 0 !important;
-
- display: -webkit-box;
- display: -moz-box;
- display: -ms-flexbox;
- display: -webkit-flex;
- display: flex;
-
-
- -webkit-box-pack: center;
- -moz-box-pack: center;
- -webkit-justify-content: center;
- -ms-flex-pack: center;
- justify-content: center;
-
- -webkit-align-content: stretch;
- -ms-flex-line-pack: stretch;
- align-content: stretch;
- -webkit-box-align: center;
- -moz-box-align: center;
- -webkit-align-items: center;
- -ms-flex-align: center;
- align-items: center;
-
+  justify-content: center;*/
+  //overflow: hidden;
+  border: none;
+  box-shadow: none;
 }
 
 .loading-hidden{
@@ -257,6 +240,45 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+.loading-timer img{
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.loading-timer div{
+  text-align: center;
+}
+.loading-timer{
+  position: absolute !important;
+  /*height: 1000%;
+  width: 1000%;*/
+  background-color: #FFF;
+  /*z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;*/
+  //overflow: hidden;
+
+}
+.doc-wrapper{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100%;
+ overflow-y: hidden;
+ text-align: center;
+}
+
+.pogingen-header{
+  width: 100%;
+  text-align: center;
+}
+
+.loading-hidden{
+  display: none;
+}
+
 
 @-moz-keyframes spin {
   from { -moz-transform: rotate(0deg); }

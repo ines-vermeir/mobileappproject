@@ -16,11 +16,12 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class LinkPage {
     link : string;
     vraag : string;
+    desc : string;
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
     //data van home view
     let stap = navParams.get('stap');
-    let poging = navParams.get('poging');
+    this.desc = navParams.get('desc');
 
     //vraag uit stap halen
     this.vraag = stap.vraag;
@@ -43,7 +44,7 @@ export class LinkPage {
             text: 'stop',
             role: 'cancel', //cancel of null(geen rol)
             handler: () => {
-                this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+                this.navCtrl.popToRoot();
             }
           },
           {

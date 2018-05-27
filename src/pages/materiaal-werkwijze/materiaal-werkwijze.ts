@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, reorderArray, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
-
+import { Storage } from '@ionic/storage';
+import moment from 'moment';
 /**
  * Generated class for the MateriaalWerkwijzePage page.
  *
@@ -23,11 +24,13 @@ export class MateriaalWerkwijzePage {
   stappenCorrect = [];
   feedback : string;
   vraag : string;
+  desc : string;
+  pogingen : number = 1;
 
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(private storage: Storage,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     //data van home view
     let stap = navParams.get('stap');
-    let poging = navParams.get('poging');
+    this.desc = navParams.get('desc');
 
     //werkwijze uit stap halen
     for(let i = 0; i < stap.antwoord.length; i++){
@@ -123,41 +126,85 @@ export class MateriaalWerkwijzePage {
     }
 
     if(correct){
-      let alert = this.alertCtrl.create({
-      title: 'Correct',
-      message: "Antwoord is correct!",
-      buttons: [
-        {
-          text: 'Volgende vraag',
-          handler: () => {
-            this.navCtrl.pop();
-          }
-        }]
-    });
-    alert.present();
-    }else{
-      let alert = this.alertCtrl.create({
-      title: 'Feedback',
-      message: this.feedback,
-      buttons: [
-        {
-          text: 'stop',
-          role: 'cancel', //cancel of null(geen rol)
-          handler: () => {
-              this.navCtrl.popTo( this.navCtrl.getByIndex(1));
-          }
-        },
-        {
-          text: 'probeer opnieuw',
-          handler: () => {
-            //pagina blijft zoals het is
-          }
-        }
-      ]
+        let alert = this.alertCtrl.create({
+        title: 'Correct',
+        message: "Antwoord is correct!",
+        buttons: [
+          {
+            text: 'Volgende vraag',
+            handler: () => {
+              this.navCtrl.pop();
+            }
+          }]
       });
       alert.present();
-    }
-
+    }else{
+        if(this.pogingen < 3 || this.pogingen == 4){
+          let alert = this.alertCtrl.create({
+          title: 'Fout',
+          message: 'Antwoord is niet correct',
+          buttons: [
+            {
+              text: 'stop',
+              role: 'cancel', //cancel of null(geen rol)
+              handler: () => {
+                this.navCtrl.popToRoot();
+              }
+            },
+            {
+              text: 'probeer opnieuw',
+              handler: () => {
+                //this.navCtrl.pop();
+              }
+            }
+          ]
+          });
+          //alert.present();
+          alert.present();
+        }
+        if(this.pogingen == 3){
+          let alert = this.alertCtrl.create({
+          title: 'Feedback',
+          message: this.feedback,
+          buttons: [
+            {
+              text: 'stop',
+              role: 'cancel', //cancel of null(geen rol)
+              handler: () => {
+                this.navCtrl.popToRoot();
+              }
+            },
+            {
+              text: 'probeer opnieuw',
+              handler: () => {
+                //this.navCtrl.pop();
+              }
+            }
+          ]
+          });
+          //alert.present();
+          alert.present();
+        }
+        if(this.pogingen == 5){
+          let alert = this.alertCtrl.create({
+          title: 'Fout',
+          message: "Antwoord is niet correct, u heeft 5 keer geprobeerd. Probeer over een uur opnieuw.",
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                this.storage.set('block', 'true');
+                let time = moment().add(1, 'hours').format();
+                console.log(time);
+                this.storage.set('time', time);
+                this.navCtrl.popToRoot();
+              }
+            }]
+        });
+          alert.present();
+        }
+        this.pogingen = this.pogingen + 1;
+      }
   }
 
 

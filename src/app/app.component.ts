@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform , NavController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
-import { LabotafelPage} from '../pages/labotafel/labotafel'
 import { DragMateriaalDirective } from '../directives/drag-materiaal/drag-materiaal';
 import { MeerKeuzePage } from '../pages/meer-keuze/meer-keuze';
 import { LinkPage } from '../pages/link/link';
@@ -13,6 +12,8 @@ import { MateriaalWerkwijzePage} from '../pages/materiaal-werkwijze/materiaal-we
 import {OverzichtPage} from '../pages/overzicht/overzicht';
 import { LoginPage } from '../pages/login/login';
 import { DragulaModule } from 'ng2-dragula';
+import { AfvalverwijderingPage } from '../pages/afvalverwijdering/afvalverwijdering';
+import { IonicStorageModule } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +30,15 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      const data = JSON.parse(localStorage.getItem('userData'));
+      if (data === null){
+        this.rootPage = LoginPage;
+      }else{
+        this.rootPage = OverzichtPage;
+      }
     });
+
+  
   }
 
 

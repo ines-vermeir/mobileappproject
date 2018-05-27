@@ -6,14 +6,21 @@
 -->
 <ion-header>
 
-  <ion-navbar hideBackButton>
-    <ion-title>linkPage</ion-title>
+  <ion-navbar hideBackButton >
+    <ion-title text-center>{{desc}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <ion-title text-wrap>{{vraag}}</ion-title>
-    <button ion-button (click)="openUrl()">Open link</button>
+<ion-content no-padding>
+      <ion-row class="doc-wrapper">
+        <ion-col col-12>
+          <h2>{{vraag}}</h2>
+          <h2>Lees de documentatie voor deze oefening:</h2>
+        </ion-col>
+        <ion-col col-12>
+          <button ion-button round (click)="openUrl()">Ga naar de documentatie</button>
+        </ion-col>
+      </ion-row>
 </ion-content>

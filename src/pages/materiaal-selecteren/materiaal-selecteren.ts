@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { LabotafelPage } from '../labotafel/labotafel';
-import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
-
+import { NativeStorage } from '@ionic-native/native-storage';
+import { Storage } from '@ionic/storage';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import moment from 'moment';
 /**
  * Generated class for the MateriaalSelecterenPage page.
  *
@@ -25,11 +26,13 @@ export class MateriaalSelecterenPage {
   feedback : string;
   vraag : string;
   antwoord = [];
+  desc : string;
+  pogingen : number = 1;
 
-  constructor(private alertCtrl: AlertController,private dragulaService: DragulaService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private storage: Storage,public authServiceProvider: AuthServiceProvider,private nativeStorage: NativeStorage, private alertCtrl: AlertController,private dragulaService: DragulaService, public navCtrl: NavController, public navParams: NavParams) {
     //data van home view
     let stap = navParams.get('stap');
-    let poging = navParams.get('poging');
+    this.desc = navParams.get('desc');
     var self = this;
 
     //antwoord uit stap halen
@@ -118,41 +121,84 @@ export class MateriaalSelecterenPage {
     }
 
     if(correct){
-      let alert = this.alertCtrl.create({
-      title: 'Correct',
-      message: "Antwoord is correct!",
-      buttons: [
-        {
-          text: 'Volgende vraag',
-          handler: () => {
-            this.navCtrl.pop();
-          }
-        }]
-    });
-    alert.present();
-    }else{
-
-      let alert = this.alertCtrl.create({
-      title: 'Feedback',
-      message: this.feedback,
-      buttons: [
-        {
-          text: 'stop',
-          role: 'cancel', //cancel of null(geen rol)
-          handler: () => {
-            this.navCtrl.popTo( this.navCtrl.getByIndex(1));
-          }
-        },
-        {
-          text: 'probeer opnieuw',
-          handler: () => {
-            //this.navCtrl.pop();
-          }
-        }
-      ]
+        let alert = this.alertCtrl.create({
+        title: 'Correct',
+        message: "Antwoord is correct!",
+        buttons: [
+          {
+            text: 'Volgende vraag',
+            handler: () => {
+              this.navCtrl.pop();
+            }
+          }]
       });
       alert.present();
-
-    }
+    }else{
+        if(this.pogingen < 3 || this.pogingen == 4){
+          let alert = this.alertCtrl.create({
+          title: 'Fout',
+          message: 'Antwoord is niet correct',
+          buttons: [
+            {
+              text: 'stop',
+              role: 'cancel', //cancel of null(geen rol)
+              handler: () => {
+                this.navCtrl.popToRoot();
+              }
+            },
+            {
+              text: 'probeer opnieuw',
+              handler: () => {
+                //this.navCtrl.pop();
+              }
+            }
+          ]
+          });
+          //alert.present();
+          alert.present();
+        }
+        if(this.pogingen == 3){
+          let alert = this.alertCtrl.create({
+          title: 'Feedback',
+          message: this.feedback,
+          buttons: [
+            {
+              text: 'stop',
+              role: 'cancel', //cancel of null(geen rol)
+              handler: () => {
+                this.navCtrl.popToRoot();
+              }
+            },
+            {
+              text: 'probeer opnieuw',
+              handler: () => {
+                //this.navCtrl.pop();
+              }
+            }
+          ]
+          });
+          //alert.present();
+          alert.present();
+        }
+        if(this.pogingen == 5){
+          let alert = this.alertCtrl.create({
+          title: 'Fout',
+          message: "Antwoord is niet correct, u heeft 5 keer geprobeerd. Probeer over een uur opnieuw.",
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                this.storage.set('block', 'true');
+                let time = moment().add(1, 'hours').format();
+                console.log(time);
+                this.storage.set('time', time);
+                this.navCtrl.popToRoot();
+              }
+            }]
+        });
+          alert.present();
+        }
+        this.pogingen = this.pogingen + 1;
+      }
   }
 }
