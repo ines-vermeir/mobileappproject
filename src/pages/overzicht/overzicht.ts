@@ -102,7 +102,7 @@ export class OverzichtPage {
       this.navCtrl.popToRoot();
     }
 
-    controle(public keuzeLabo: string, desc: string){
+    controle(keuzeLabo: string, desc: string){
         this.desc = desc;
         this.keuzeLabo = keuzeLabo;
         var self = this;
