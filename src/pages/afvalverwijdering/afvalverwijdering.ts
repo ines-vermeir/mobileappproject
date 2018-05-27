@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
-
+import moment from 'moment';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the AfvalverwijderingPage page.
  *
@@ -15,12 +16,16 @@ import { IonicPage, NavController, NavParams,LoadingController,AlertController }
 })
 export class AfvalverwijderingPage {
 
-  keuze : string
-  vraag : string
-  correct : string
+  keuze : string;
+  vraag : string;
+  correct : string;
+  feedback = '<div class="alert"><img src="../../assets/imgs/afval.png" alt="loading icon"></div>';
+  pogingen : number = 1;
+  desc : string;
 
-  constructor(private alertCtrl: AlertController,public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private storage: Storage,private alertCtrl: AlertController,public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
     let stap = navParams.get('stap');
+    this.desc = navParams.get('desc');
     this.vraag = stap.vraag;
     this.correct = stap.antwoord;
   }
@@ -43,7 +48,7 @@ export class AfvalverwijderingPage {
         }]
     });
     alert.present();
-    }else{
+  }else{
       let loading = this.loadingCtrl.create({
         spinner: 'hide',
         content: `
@@ -51,31 +56,74 @@ export class AfvalverwijderingPage {
           <img src="../../assets/imgs/bom.gif" alt="loading icon">
         </div>
           `,
-       duration: 5500
+        duration: 5500
       });
-
       loading.present();
-      let alert = this.alertCtrl.create({
-      title: 'Feedback',
-      message: this.feedback,
-      buttons: [
-        {
-          text: 'stop',
-          role: 'cancel', //cancel of null(geen rol)
-          handler: () => {
-            this.navCtrl.popTo( this.navCtrl.getByIndex(1));
+      if(this.pogingen < 3 || this.pogingen == 4){
+        let alert = this.alertCtrl.create({
+        title: 'Fout',
+        message: 'Antwoord is niet correct',
+        buttons: [
+          {
+            text: 'stop',
+            role: 'cancel', //cancel of null(geen rol)
+            handler: () => {
+              this.navCtrl.popToRoot();
+            }
+          },
+          {
+            text: 'probeer opnieuw',
+            handler: () => {
+              //this.navCtrl.pop();
+            }
           }
-        },
-        {
-          text: 'probeer opnieuw',
-          handler: () => {
-            //this.navCtrl.pop();
+        ]
+        });
+        //alert.present();
+        setTimeout(()=>alert.present(),5500);
+      }
+      if(this.pogingen == 3){
+        let alert = this.alertCtrl.create({
+        title: 'Feedback',
+        message: this.feedback,
+        buttons: [
+          {
+            text: 'stop',
+            role: 'cancel', //cancel of null(geen rol)
+            handler: () => {
+              this.navCtrl.popToRoot();
+            }
+          },
+          {
+            text: 'probeer opnieuw',
+            handler: () => {
+              //this.navCtrl.pop();
+            }
           }
-        }
-      ]
+        ]
+        });
+        //alert.present();
+        setTimeout(()=>alert.present(),5500);
+      }
+      if(this.pogingen == 5){
+        let alert = this.alertCtrl.create({
+        title: 'Fout',
+        message: "Antwoord is niet correct, u heeft 5 keer geprobeerd. Probeer over een uur opnieuw.",
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.storage.set('block', 'true');
+              let time = moment().add(1, 'hours').format();
+              console.log(time);
+              this.storage.set('time', time);
+              this.navCtrl.popToRoot();
+            }
+          }]
       });
-      //alert.present();
-      setTimeout(()=>alert.present(),5500);
+        setTimeout(()=>alert.present(),5500);
+      }
+      this.pogingen = this.pogingen + 1;
     }
   }
 

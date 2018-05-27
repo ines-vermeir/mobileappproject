@@ -45,7 +45,7 @@
 <ion-header>
   <ion-navbar hideBackButton>
     <ion-title text-center>
-      Oefening
+      {{desc}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -63,7 +63,7 @@
     <ion-row class="oefening-orden-option">
       <ion-col col-12>
         <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
-          <ion-item *ngFor="let stap of stappen">{{ stap }}</ion-item>
+          <ion-item *ngFor="let stap of stappen" text-wrap>{{ stap }}</ion-item>
         </ion-item-group>
       </ion-col>
     </ion-row>

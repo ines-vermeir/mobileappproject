@@ -34,12 +34,11 @@
 
 <!--Voeg loading-hidden toe aan de class om de loader te verwijderen-->
 <ion-content padding>
-
   <ion-grid class="oefeningen-grid" no-margin>
     <ion-row margin-vertical class="oefening-tabel-header">
       <ion-col col-9>Opdracht</ion-col>
     </ion-row>
-    <ion-row margin-vertical class="oefening" *ngFor="let labo of labos" (click)="controle(labo.labo)">
+    <ion-row margin-vertical class="oefening" *ngFor="let labo of labos" (click)="controle(labo.labo, labo.desc)">
       <ion-col col-12 text-left class="oefening-gedaan">{{labo.desc}}</ion-col>
     </ion-row>
   </ion-grid>

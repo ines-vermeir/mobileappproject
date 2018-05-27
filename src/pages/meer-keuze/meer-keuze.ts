@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
+import moment from 'moment';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the MeerKeuzePage page.
  *
@@ -19,11 +20,12 @@ export class MeerKeuzePage {
     feedback : string;
     vraag : string;
     keuze = [];
-
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+    desc : string;
+    pogingen : number = 1;
+  constructor(private storage: Storage,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
       //data van home view
       let stap = navParams.get('stap');
-      let poging = navParams.get('poging');
+      this.desc = navParams.get('desc');
 
       //werkwijze uit stap halen
      Object.keys(stap.antwoord.mogelijkheden).forEach(key => {
@@ -54,41 +56,85 @@ export class MeerKeuzePage {
          keuze = key
        });
         if (this.correct == keuze){
-
-            let alert = this.alertCtrl.create({
-            title: 'Correct',
-            message: "Antwoord is correct!",
-            buttons: [
-              {
-                text: 'Volgende vraag',
-                handler: () => {
-                  this.navCtrl.pop();
-                }
-              }]
-          });
-          alert.present();
-          }else{
-            let alert = this.alertCtrl.create({
-            title: 'Feedback',
-            message: this.feedback,
-            buttons: [
-              {
-                text: 'stop',
-                role: 'cancel', //cancel of null(geen rol)
-                handler: () => {
-                    this.navCtrl.popTo( this.navCtrl.getByIndex(1));
-                }
-              },
-              {
-                text: 'probeer opnieuw',
-                handler: () => {
-                  //pagina blijft zoals het is
-                }
-              }
-            ]
+              let alert = this.alertCtrl.create({
+              title: 'Correct',
+              message: "Antwoord is correct!",
+              buttons: [
+                {
+                  text: 'Volgende vraag',
+                  handler: () => {
+                    this.navCtrl.pop();
+                  }
+                }]
             });
             alert.present();
-          }
+          }else{
+              if(this.pogingen < 3 || this.pogingen == 4){
+                let alert = this.alertCtrl.create({
+                title: 'Fout',
+                message: 'Antwoord is niet correct',
+                buttons: [
+                  {
+                    text: 'stop',
+                    role: 'cancel', //cancel of null(geen rol)
+                    handler: () => {
+                      this.navCtrl.popToRoot();
+                    }
+                  },
+                  {
+                    text: 'probeer opnieuw',
+                    handler: () => {
+                      //this.navCtrl.pop();
+                    }
+                  }
+                ]
+                });
+                //alert.present();
+                alert.present();
+              }
+              if(this.pogingen == 3){
+                let alert = this.alertCtrl.create({
+                title: 'Feedback',
+                message: this.feedback,
+                buttons: [
+                  {
+                    text: 'stop',
+                    role: 'cancel', //cancel of null(geen rol)
+                    handler: () => {
+                      this.navCtrl.popToRoot();
+                    }
+                  },
+                  {
+                    text: 'probeer opnieuw',
+                    handler: () => {
+                      //this.navCtrl.pop();
+                    }
+                  }
+                ]
+                });
+                //alert.present();
+                alert.present();
+              }
+              if(this.pogingen == 5){
+                let alert = this.alertCtrl.create({
+                title: 'Fout',
+                message: "Antwoord is niet correct, u heeft 5 keer geprobeerd. Probeer over een uur opnieuw.",
+                buttons: [
+                  {
+                    text: 'OK',
+                    handler: () => {
+                      this.storage.set('block', 'true');
+                      let time = moment().add(1, 'hours').format();
+                      console.log(time);
+                      this.storage.set('time', time);
+                      this.navCtrl.popToRoot();
+                    }
+                  }]
+              });
+                alert.present();
+              }
+              this.pogingen = this.pogingen + 1;
+            }
 
     }
 

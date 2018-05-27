@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
-
+import { NativeStorage } from '@ionic-native/native-storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MateriaalSelecterenPage } from '../pages/materiaal-selecteren/materiaal-selecteren';
@@ -18,9 +18,8 @@ import {OverzichtPage} from '../pages/overzicht/overzicht';
 import { LoginPage } from "../pages/login/login";
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AfvalverwijderingPage } from '../pages/afvalverwijdering/afvalverwijdering';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { DragulaModule } from 'ng2-dragula';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +40,11 @@ import { DragulaModule } from 'ng2-dragula';
     IonicModule.forRoot(MyApp),
     CommonModule,
     HttpModule,
-    DragulaModule
+    DragulaModule,
+    IonicStorageModule.forRoot({
+     name: '__mydb',
+        driverOrder: ['indexeddb', 'sqlite', 'websql']
+   })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,13 +56,15 @@ import { DragulaModule } from 'ng2-dragula';
     MateriaalWerkwijzePage,
     OverzichtPage,
     LoginPage,
-    AfvalverwijderingPage
+    AfvalverwijderingPage,
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    NativeStorage
   ]
 })
 export class AppModule {}

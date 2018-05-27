@@ -31,10 +31,9 @@ export class LoginPage {
         this.responseData=result;
         console.log(this.responseData);
         if(this.responseData.userData){
-          localStorage.setItem('userData', JSON.stringify(this.responseData) )
-          this.navCtrl.push(OverzichtPage,
-            
-          );
+          localStorage.setItem('userData', JSON.stringify(this.responseData) );
+          this.navCtrl.setRoot(OverzichtPage);
+          this.navCtrl.push(OverzichtPage);
         }
         else{
           this.presentToast("Please give valid email and password");
